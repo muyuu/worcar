@@ -1,8 +1,8 @@
 import EventEmitter from "../dispatcher/EventEmitter";
 
 const firebase = require('firebase');
+require('../config/firebase');
 require("firebase/auth");
-
 
 export default class Store extends EventEmitter {
     // dispatcherを受け取る
