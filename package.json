@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:js": "browserify src/js/index.js --standalone Main -o dist/index.js -t [ babelify --presets [ es2015 ] --plugins [ babel-plugin-transform-flow-strip-types ] ] -t espowerify",
+    "build:js": "browserify src/js/index.js -g uglifyify --standalone Main -o dist/index.js -t [ babelify --presets [ es2015 ] --plugins [ babel-plugin-transform-flow-strip-types ] ] -t espowerify",
     "watch:js": "watchify src/js/index.js --standalone Main -o dist/index.js -t [ babelify --presets [ es2015 ] --plugins [ babel-plugin-transform-flow-strip-types ] ] -t espowerify -v",
     "build:css": "node-sass --output-style compressed src/css/style.sass dist/style.css",
     "watch:css": "node-sass -w src/css/style.sass dist/style.css",
     "check": "flow check",
     "lint": "eslint ./src",
+    "serve": "firebase serve",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "firebase serve & npm run watch:js & npm run watch:css",
+    "start": "npm run serve & npm run watch:js & npm run watch:css",
     "build": "npm run build:js & npm run build:css"
   },
   "keywords": [],
@@ -36,6 +37,7 @@
     "react-dom": "^15.4.1",
     "react-router": "^3.0.1",
     "standby.css": "^1.1.1",
+    "uglifyify": "^3.0.4",
     "watchify": "^3.8.0"
   }
 }
