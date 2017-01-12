@@ -8,9 +8,9 @@ import {action, store} from '../dispatcher/dispatcher';
 import App from './App';
 
 // auth
-import Login from './auth/Login.jsx';
-import Logout from './auth/Logout.jsx';
-import Signup from './auth/Signup.jsx';
+import Login from './auth/Login';
+import Logout from './auth/Logout';
+import Signup from './auth/Signup';
 
 // layout
 import Layout from './Layout';
