@@ -9,15 +9,15 @@ const firebase = require('firebase');
 require("firebase/auth");
 require("firebase/database");
 
-let PostListProps = [];
-const refMeta = firebase.database().ref('/post/meta');
+// let PostListProps = [];
+// const refMeta = firebase.database().ref('/post/meta');
 
-export default class App extends Component {
+export default class Layout extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            PostListProps
+            PostListProps: []
         };
 
         store.on("LOGIN", this.login.bind(this));
@@ -47,7 +47,7 @@ export default class App extends Component {
 
     render(){
         return (
-            <div className="app l-row">
+            <div className="l-row">
                 <div className="l-col4 app__listview">
                     <PostList list={this.getListProps()}/>
                 </div>
