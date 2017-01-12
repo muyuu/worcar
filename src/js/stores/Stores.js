@@ -11,6 +11,7 @@ export default class Store extends EventEmitter {
 
         // observe event
         dispatcher.on("LOGIN_CHECK", this.loginCheck.bind(this));
+        dispatcher.on("SIGNUP", this.signup.bind(this));
         dispatcher.on("LOGIN", this.login.bind(this));
         dispatcher.on("LOGOUT", this.logout.bind(this));
     }
@@ -29,11 +30,23 @@ export default class Store extends EventEmitter {
         });
     }
 
+    signup(data){
+        firebase.auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then(()=>{
+                this.emit("SIGNUP");
+            })
+            .catch((error)=>{
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+    }
+
     login(data){
         firebase.auth()
             .signInWithEmailAndPassword(data.email, data.password)
             .then(()=>{
-                this.emit("CHANGE");
+                this.emit("LOGIN");
             })
             .catch((error)=>{
                 const errorCode = error.code;

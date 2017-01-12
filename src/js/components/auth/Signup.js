@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {signup} from '../../model/auth';
+import {action, store} from '../../dispatcher/dispatcher';
 
 export default class Signup extends Component {
 
@@ -32,10 +32,10 @@ export default class Signup extends Component {
     }
 
     signup(){
-        signup(this.state.signupEmail, this.state.signupPassword);
+        action.signup(this.state.signupEmail, this.state.signupPassword);
         this.setState({
-            loginEmail: "",
-            loginPassword: "",
+            signupEmail: "",
+            signupPassword: "",
         });
     }
 

@@ -7,6 +7,11 @@ export default class Actions {
         this.dispatcher.emit("LOGIN_CHECK");
     }
 
+    signup(email, password){
+        const data = {email, password};
+        this.dispatcher.emit("SIGNUP", data);
+    }
+
     login(email, password){
         const data = {email, password};
         this.dispatcher.emit("LOGIN", data);
