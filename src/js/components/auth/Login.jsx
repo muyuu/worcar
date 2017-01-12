@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {login} from '../../model/auth';
+import {action, store} from '../../dispatcher/dispatcher';
 
 export default class Login extends Component {
     constructor(props){
@@ -31,7 +31,7 @@ export default class Login extends Component {
     }
 
     login(){
-        login(this.state.loginEmail, this.state.loginPassword);
+        action.login(this.state.loginEmail, this.state.loginPassword);
         this.setState({
             loginEmail: "",
             loginPassword: "",

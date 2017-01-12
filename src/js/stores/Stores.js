@@ -4,7 +4,7 @@ const firebase = require('firebase');
 require("firebase/auth");
 
 
-export default class UserStore extends EventEmitter {
+export default class Store extends EventEmitter {
     // dispatcherを受け取る
     constructor(dispatcher){
         super();
@@ -19,12 +19,10 @@ export default class UserStore extends EventEmitter {
     }
 
     loginCheck(){
-        firebase.auth().onAuthStateChanged(function(user) {
+        firebase.auth().onAuthStateChanged((user)=>{
             if (user) {
-                console.log('already login');
                 this.emit("LOGIN");
             } else {
-                console.log('not login');
                 this.emit("LOGOUT");
             }
         });
@@ -32,14 +30,15 @@ export default class UserStore extends EventEmitter {
 
     login(data){
         firebase.auth()
-            .signInWithEmailAndPassword(email, password)
+            .signInWithEmailAndPassword(data.email, data.password)
+            .then(()=>{
+                this.emit("CHANGE");
+            })
             .catch((error)=>{
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorMessage);
             });
 
-        // emit "CHANGE" --> self
-        this.emit("CHANGE");
     }
 }

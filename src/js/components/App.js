@@ -1,32 +1,45 @@
-import React, {Component} from 'react';
+import React, {Component, Children} from 'react';
 import {action, store} from '../dispatcher/dispatcher';
-
 
 export default class Layout extends Component {
     constructor(props){
         super(props);
 
         this.state = {
+            isLogin: false
         };
 
+        // login check
+        action.loginCheck();
+
+        // subscribe
         store.on("LOGIN", this.login.bind(this));
+        store.on("LOGOUT", this.logout.bind(this));
     }
 
     login(){
+        this.setState({
+            isLogin: true
+        });
     }
 
-    updateProps(PostListProps){
-        this.setState({PostListProps});
+    logout(){
+        this.setState({
+            isLogin: false
+        });
     }
 
-    getListProps(){
-        return this.state.PostListProps;
+    setChildren(){
+        let count = 0;
+        return Children.map(this.props.children, child =>{
+            return React.cloneElement(child, Object.assign(this.state, {key: ++count}));
+        });
     }
 
     render(){
         return (
             <div className="app">
-                {this.props.children}
+                {this.setChildren()}
             </div>
         );
     }

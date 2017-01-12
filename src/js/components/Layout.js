@@ -20,8 +20,6 @@ export default class Layout extends Component {
             PostListProps: []
         };
 
-        store.on("LOGIN", this.login.bind(this));
-
         refMeta.once('value').then((snapshot)=>{
             PostListProps = snapshot.val();
             this.updateProps(PostListProps);
@@ -31,9 +29,6 @@ export default class Layout extends Component {
             PostListProps = data.val();
             this.updateProps(PostListProps);
         });
-    }
-
-    login(){
     }
 
     updateProps(PostListProps){
