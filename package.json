@@ -1,0 +1,40 @@
+{
+  "name": "worcar",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:js": "browserify src/js/index.js --standalone Main -o dist/index.js -t [ babelify --presets [ es2015 ] --plugins [ babel-plugin-transform-flow-strip-types ] ] -t espowerify",
+    "watch:js": "watchify src/js/index.js --standalone Main -o dist/index.js -t [ babelify --presets [ es2015 ] --plugins [ babel-plugin-transform-flow-strip-types ] ] -t espowerify -v",
+    "build:css": "node-sass --output-style compressed src/css/style.sass dist/style.css",
+    "watch:css": "node-sass -w src/css/style.sass dist/style.css",
+    "check": "flow check",
+    "lint": "eslint ./src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "firebase serve & npm run watch:js & npm run watch:css",
+    "build": "npm run build:js & npm run build:css"
+  },
+  "keywords": [],
+  "author": "muyuu",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-transform-flow-strip-types": "^6.21.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.3.0",
+    "eslint": "^3.12.2",
+    "eslint-plugin-react": "^6.8.0",
+    "espowerify": "^1.1.0",
+    "firebase": "^3.6.4",
+    "firebase-tools": "^3.2.1",
+    "flow-bin": "^0.37.4",
+    "font-awesome": "^4.7.0",
+    "node-sass": "^4.1.1",
+    "power-assert": "^1.4.2",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "standby.css": "^1.1.1",
+    "watchify": "^3.8.0"
+  }
+}
