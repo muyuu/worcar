@@ -17,14 +17,6 @@ import Layout from './Layout';
 
 
 export default class Root extends Component {
-    constructor(props){
-        super(props);
-
-        this.state = {
-        };
-    }
-
-
     render(){
         return (
             <Router history={browserHistory}>
