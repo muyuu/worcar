@@ -6,7 +6,6 @@ import {action, store} from '../dispatcher/dispatcher';
 import PostList from './list/PostList.jsx';
 
 const firebase = require('firebase');
-require("firebase/auth");
 require("firebase/database");
 
 let PostListProps = [];
