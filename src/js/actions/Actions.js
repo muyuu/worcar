@@ -8,7 +8,7 @@ export default class Actions {
     }
 
     login(email, password){
-        const data = {email: password};
+        const data = {email, password};
         this.dispatcher.emit("LOGIN", data);
     }
 }
