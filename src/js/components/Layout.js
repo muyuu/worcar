@@ -9,8 +9,8 @@ const firebase = require('firebase');
 require("firebase/auth");
 require("firebase/database");
 
-// let PostListProps = [];
-// const refMeta = firebase.database().ref('/post/meta');
+let PostListProps = [];
+const refMeta = firebase.database().ref('/post/meta');
 
 export default class Layout extends Component {
     constructor(props){

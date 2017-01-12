@@ -5,7 +5,7 @@ import {action, store} from '../dispatcher/dispatcher';
 
 
 // app
-import App from './App.jsx';
+import App from './App';
 
 // auth
 import Login from './auth/Login.jsx';
@@ -13,7 +13,7 @@ import Logout from './auth/Logout.jsx';
 import Signup from './auth/Signup.jsx';
 
 // layout
-import Layout from './Layout.jsx';
+import Layout from './Layout';
 
 
 export default class Root extends Component {
