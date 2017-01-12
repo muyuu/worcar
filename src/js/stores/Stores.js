@@ -12,6 +12,7 @@ export default class Store extends EventEmitter {
         // observe event
         dispatcher.on("LOGIN_CHECK", this.loginCheck.bind(this));
         dispatcher.on("LOGIN", this.login.bind(this));
+        dispatcher.on("LOGOUT", this.logout.bind(this));
     }
 
     getCount(){
@@ -39,6 +40,13 @@ export default class Store extends EventEmitter {
                 const errorMessage = error.message;
                 console.log(errorMessage);
             });
+    }
 
+    logout(){
+        firebase.auth().signOut().then(()=>{
+            this.emit("LOGOUT");
+        }, (error)=>{
+            console.log("error! not sign out");
+        });
     }
 }

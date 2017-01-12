@@ -11,4 +11,8 @@ export default class Actions {
         const data = {email, password};
         this.dispatcher.emit("LOGIN", data);
     }
+
+    logout(email, password){
+        this.dispatcher.emit("LOGOUT");
+    }
 }

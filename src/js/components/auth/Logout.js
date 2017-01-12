@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {logout} from '../../model/auth';
+import {action, store} from '../../dispatcher/dispatcher';
 
 export default class Logout extends Component {
     constructor(props){
@@ -11,7 +11,7 @@ export default class Logout extends Component {
     }
 
     logout(){
-        logout();
+        action.logout();
     }
 
     render(){
