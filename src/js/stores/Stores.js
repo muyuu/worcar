@@ -32,7 +32,7 @@ export default class Store extends EventEmitter {
 
     signup(data){
         firebase.auth()
-            .createUserWithEmailAndPassword(email, password)
+            .createUserWithEmailAndPassword(data.email, data.password)
             .then(()=>{
                 this.emit("SIGNUP");
             })
