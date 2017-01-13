@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {action, store} from '../../dispatcher/dispatcher';
+import {action} from '../../dispatcher/dispatcher';
 
 export default props =>{
 

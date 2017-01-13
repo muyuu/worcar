@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 
-import {action, store} from '../dispatcher/dispatcher';
-
-
 // app
 import App from './App';
 
