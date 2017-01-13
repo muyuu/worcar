@@ -17,7 +17,7 @@ export default class Actions {
         this.dispatcher.emit("LOGIN", data);
     }
 
-    logout(email, password){
+    logout(){
         this.dispatcher.emit("LOGOUT");
     }
 }
