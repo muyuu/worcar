@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 
-import {action, store} from '../dispatcher/dispatcher';
-
-
 import PostList from './list/PostList.jsx';
 
 const firebase = require('firebase');
