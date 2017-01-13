@@ -6,5 +6,3 @@ render(
     <Root />,
     document.getElementById("app")
 );
-
-
