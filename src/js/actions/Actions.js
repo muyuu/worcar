@@ -1,23 +1,25 @@
+import {LOGIN_CHECK, SIGNUP, LOGIN, LOGOUT} from "./actionTypes";
+
 export default class Actions {
     constructor(dispatcher){
         this.dispatcher = dispatcher;
     }
 
     loginCheck(){
-        this.dispatcher.emit("LOGIN_CHECK");
+        this.dispatcher.emit(LOGIN_CHECK);
     }
 
     signup(email, password){
         const data = {email, password};
-        this.dispatcher.emit("SIGNUP", data);
+        this.dispatcher.emit(SIGNUP, data);
     }
 
     login(email, password){
         const data = {email, password};
-        this.dispatcher.emit("LOGIN", data);
+        this.dispatcher.emit(LOGIN, data);
     }
 
     logout(){
-        this.dispatcher.emit("LOGOUT");
+        this.dispatcher.emit(LOGOUT);
     }
 }
