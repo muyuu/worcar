@@ -1,5 +1,6 @@
 import React, {Component, Children} from 'react';
 import {action, store} from '../dispatcher/dispatcher';
+import {LOGIN, LOGOUT} from "../actions/actionTypes";
 
 export default class Layout extends Component {
     constructor(props){
@@ -13,8 +14,8 @@ export default class Layout extends Component {
         action.loginCheck();
 
         // subscribe
-        store.on("LOGIN", this.login.bind(this));
-        store.on("LOGOUT", this.logout.bind(this));
+        store.on(LOGIN, this.login.bind(this));
+        store.on(LOGOUT, this.logout.bind(this));
     }
 
     login(){
