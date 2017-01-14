@@ -1,65 +1,30 @@
+// @flow
 import EventEmitter from "../dispatcher/EventEmitter";
-
-const firebase = require('firebase');
-require('../config/firebase');
-require("firebase/auth");
 
 export default class Store extends EventEmitter {
     // dispatcherを受け取る
-    constructor(dispatcher){
+    constructor(dispatcher: Object, obj: Object){
         super();
+        this.attachMethod(obj, dispatcher);
+    }
 
-        // observe event
-        dispatcher.on("LOGIN_CHECK", this.loginCheck.bind(this));
-        dispatcher.on("SIGNUP", this.signup.bind(this));
-        dispatcher.on("LOGIN", this.login.bind(this));
-        dispatcher.on("LOGOUT", this.logout.bind(this));
+
+    attachMethod(functions: Object, dispatcher: Object){
+        Object.keys(functions).forEach((methodName: string) =>{
+            const type = functions[methodName].type;
+            const method = functions[methodName].action;
+
+            this.setMethod(type, methodName, method, dispatcher);
+        });
+
+    }
+
+    setMethod(type: string, methodName: string, method: Function, dispatcher: Object){
+        this[methodName] = method;
+        dispatcher.on(type, this[methodName].bind(this));
     }
 
     getCount(){
         return this.count;
-    }
-
-    loginCheck(){
-        firebase.auth().onAuthStateChanged((user)=>{
-            if (user) {
-                this.emit("LOGIN");
-            } else {
-                this.emit("LOGOUT");
-            }
-        });
-    }
-
-    signup(data){
-        firebase.auth()
-            .createUserWithEmailAndPassword(data.email, data.password)
-            .then(()=>{
-                this.emit("SIGNUP");
-            })
-            .catch((error)=>{
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            });
-    }
-
-    login(data){
-        firebase.auth()
-            .signInWithEmailAndPassword(data.email, data.password)
-            .then(()=>{
-                this.emit("LOGIN");
-            })
-            .catch((error)=>{
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorMessage);
-            });
-    }
-
-    logout(){
-        firebase.auth().signOut().then(()=>{
-            this.emit("LOGOUT");
-        }, (error)=>{
-            console.log("error! not sign out");
-        });
     }
 }
