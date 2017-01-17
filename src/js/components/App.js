@@ -1,27 +1,52 @@
 import React, {Component, Children} from 'react';
 import {action, store} from '../dispatcher/dispatcher';
-import {LOGIN, LOGOUT} from "../actions/actionTypes";
+import {ALREADY_LOGIN, ALREADY_LOGOUT} from "../actions/actionTypes";
+const firebase = require('firebase');
+require("firebase/database");
+
+import PostList from './list/PostList';
+
 
 export default class Layout extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            isLogin: false
+            isLogin : false,
+            uid     : null,
+            postList: [],
         };
 
         // login check
         action.loginCheck();
 
         // subscribe
-        store.on(LOGIN, this.login.bind(this));
-        store.on(LOGOUT, this.logout.bind(this));
+        store.on(ALREADY_LOGIN, this.alreadyLogin.bind(this));
+        store.on(ALREADY_LOGOUT, this.logout.bind(this));
     }
 
-    login(){
+    alreadyLogin(uid){
         this.setState({
-            isLogin: true
+            isLogin: true,
+            uid
         });
+
+        this.readList();
+    }
+
+    readList(){
+        const userPostsRef = firebase.database().ref(`/user-post/${this.state.uid}`);
+
+        userPostsRef.orderByChild('updateAt')
+                    .on('value', this.updatePostData.bind(this));
+
+    }
+
+    updatePostData(data){
+        console.log('data changed');
+            const posts = data.val();
+            const postList = Object.keys(posts).map(val=> posts[val]);
+            this.setState({ postList });
     }
 
     logout(){
@@ -30,17 +55,32 @@ export default class Layout extends Component {
         });
     }
 
+    updateProps(PostListProps){
+        this.setState({ PostListProps });
+    }
+
+    getList(){
+        return this.state.postList;
+    }
+
     setChildren(){
         let count = 0;
         return Children.map(this.props.children, child =>{
-            return React.cloneElement(child, Object.assign(this.state, {key: ++count}));
+            return React.cloneElement(child, Object.assign(this.state, { key: ++count }));
         });
     }
 
     render(){
         return (
             <div className="app">
-                {this.setChildren()}
+                <div className="l-row">
+                    <div className="l-col4 app__listview">
+                        <PostList list={this.getList()}/>
+                    </div>
+                    <div className="l-col8 app__detailview">
+                        {this.setChildren()}
+                    </div>
+                </div>
             </div>
         );
     }
