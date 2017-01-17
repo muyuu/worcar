@@ -5,6 +5,7 @@ export default class Store extends EventEmitter {
     // dispatcherを受け取る
     constructor(dispatcher: Object, obj: Object){
         super();
+        this.isLogin = false;
         this.attachMethod(obj, dispatcher);
     }
 
@@ -16,7 +17,6 @@ export default class Store extends EventEmitter {
 
             this.setMethod(type, methodName, method, dispatcher);
         });
-
     }
 
     setMethod(type: string, methodName: string, method: Function, dispatcher: Object){
@@ -24,7 +24,7 @@ export default class Store extends EventEmitter {
         dispatcher.on(type, this[methodName].bind(this));
     }
 
-    getCount(){
-        return this.count;
+    getIsLogin(){
+        return this.isLogin;
     }
 }
