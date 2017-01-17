@@ -20,7 +20,7 @@ export default class Store extends EventEmitter {
     }
 
     setMethod(type: string, methodName: string, method: Function, dispatcher: Object){
-        this[methodName] = method;
+        this.__proto__[methodName] = method;
         dispatcher.on(type, this[methodName].bind(this));
     }
 
