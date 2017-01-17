@@ -2445,6 +2445,10 @@ html, body {
     height: 100%; }
   .app__detailview {
     height: 100%; }
+  .app .l-row,
+  .app .l-col1, .app .l-col2, .app .l-col3, .app .l-col4, .app .l-col5, .app .l-col6,
+  .app .l-col7, .app .l-col8, .app .l-col9, .app .l-col10, .app .l-col11, .app .l-col12 {
+    height: 100%; }
 
 .app {
   height: 100%; }
