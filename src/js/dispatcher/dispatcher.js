@@ -4,9 +4,11 @@ import Sotre from '../stores/Stores';
 
 // set stores
 import authSotre from '../stores/auth/authStores';
+import postSotre from '../stores/post/postStores';
 const stores = Object.assign(
     {},
-    authSotre
+    authSotre,
+    postSotre,
 );
 
 const dispatcher = new EventEmitter();
