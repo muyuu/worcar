@@ -1,7 +1,7 @@
 const firebase = require('firebase');
 require('../../config/firebase');
 require("firebase/auth");
-import {LOGIN_CHECK, SIGNUP, LOGIN, LOGOUT} from "../../actions/actionTypes";
+import {LOGIN_CHECK, ALREADY_LOGIN, ALREADY_LOGOUT, SIGNUP, LOGIN, LOGOUT} from "../../actions/actionTypes";
 
 
 const loginCheck = {
@@ -9,10 +9,9 @@ const loginCheck = {
     action: function loginCheck(){
         firebase.auth().onAuthStateChanged((user)=>{
             if (user) {
-                console.log('already login');
-                this.emit(LOGIN);
+                this.emit(ALREADY_LOGIN, user.uid);
             } else {
-                this.emit(LOGOUT);
+                this.emit(ALREADY_LOGOUT);
             }
         });
     }
