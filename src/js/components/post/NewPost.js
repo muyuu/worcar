@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 
-import {addPost} from '../../model/post/newPost';
+import {action} from '../../dispatcher/dispatcher';
 
 export default class NewPost extends Component {
     constructor(props){
         super(props);
+
+        this.props = props;
 
         this.state = {
             title: "",
@@ -31,16 +33,27 @@ export default class NewPost extends Component {
     }
 
     addPost(){
-        addPost(this.state);
+        const data = {
+            title: this.state.title,
+            raw: this.state.raw,
+            createdAt: parseInt( new Date() /1000 ),
+            updatedAt: parseInt( new Date() /1000 ),
+        };
+        const uid = this.props.uid;
+        action.newPost(uid, data);
     }
 
     render(){
         return (
             <div className="newPost">
-                <div className="newPost__title"></div>
-                <div className="newPost__raw"></div>
+                <div className="newPost__title">
+                    <input type="text" onChange={this.onChangeTitle} />
+                </div>
+                <div className="newPost__raw">
+                    <textarea name="" id="" cols="30" rows="10" onChange={this.onChangeRaw}></textarea>
+                </div>
                 <div className="newPost__btn">
-                    <button onClick={this.addPost}></button>
+                    <button onClick={this.addPost}>post</button>
                 </div>
             </div>
         );
