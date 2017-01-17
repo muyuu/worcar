@@ -1,4 +1,4 @@
-import {LOGIN_CHECK, SIGNUP, LOGIN, LOGOUT} from "./actionTypes";
+import {LOGIN_CHECK, SIGNUP, LOGIN, LOGOUT, NEW_POST} from "./actionTypes";
 
 export default class Actions {
     constructor(dispatcher){
@@ -21,5 +21,14 @@ export default class Actions {
 
     logout(){
         this.dispatcher.emit(LOGOUT);
+    }
+
+    // --------------------------------------
+    // post
+    // --------------------------------------
+    newPost(uid, post){
+        const data = post;
+        data.uid = uid;
+        this.dispatcher.emit(NEW_POST, data);
     }
 }
