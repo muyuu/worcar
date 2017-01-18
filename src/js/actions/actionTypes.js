@@ -10,3 +10,5 @@ export const LOGOUT = 'LOGOUT';
 export const NEW_POST = 'NEW_POST';
 export const UPDATE_POST = 'UPDATE_POST';
 
+export const GET_USER_POSTS = 'GET_USER_POSTS';
+

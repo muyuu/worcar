@@ -8,11 +8,12 @@ export default class App extends Component {
         this.showDetail = this.showDetail.bind(this);
     }
 
-    showDetail(){}
+    showDetail(){
+    }
 
     render(){
         // console.log(this.props);
-        const items = this.props.list.map((item, key)=>{
+        const items = this.props.list.map((item, key) =>{
             return <li onClick={this.showDetail()} key={(key+1).toString()}>{item.title}</li>;
         });
 
