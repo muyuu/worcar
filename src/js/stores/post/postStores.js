@@ -3,6 +3,7 @@ require('../../config/firebase');
 require("firebase/auth");
 import {NEW_POST, GET_USER_POSTS} from "../../actions/actionTypes";
 
+// getter setter
 export const postProps = [
 ];
 
@@ -19,7 +20,10 @@ const newPost = {
         const updates = {};
         updates[`/post/${newPostKey}`] = data;
         updates[`/user-post/${uid}/${newPostKey}`] = data;
-        firebase.database().ref().update(updates);
+
+        // post data
+        ref.update(updates);
+
         this.emit(NEW_POST);
     }
 };
