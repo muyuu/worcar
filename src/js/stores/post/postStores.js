@@ -11,12 +11,11 @@ const newPost = {
     type: NEW_POST,
     action: function newPost(data){
         const uid = data.uid;
-        const post = {
-            title: data.title,
-            raw: data.raw,
-            createdAt: data.createdAt,
-        }
-        const newPostKey = firebase.database().ref().child('post').push().key;
+
+        const ref = firebase.database().ref();
+        const newPostKey = ref.child('post').push().key;
+
+        // make new post
         const updates = {};
         updates[`/post/${newPostKey}`] = data;
         updates[`/user-post/${uid}/${newPostKey}`] = data;
