@@ -3,6 +3,9 @@ require('../../config/firebase');
 require("firebase/auth");
 import {NEW_POST} from "../../actions/actionTypes";
 
+export const postProps = [
+];
+
 
 const newPost = {
     type: NEW_POST,
