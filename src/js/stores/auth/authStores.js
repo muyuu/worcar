@@ -3,6 +3,9 @@ require('../../config/firebase');
 require("firebase/auth");
 import {LOGIN_CHECK, ALREADY_LOGIN, ALREADY_LOGOUT, SIGNUP, LOGIN, LOGOUT} from "../../actions/actionTypes";
 
+const auth = firabase.auth();
+
+// getter setter
 export const authProps = [
     {
         name: "uid",
@@ -18,7 +21,7 @@ export const authProps = [
 const loginCheck = {
     type: LOGIN_CHECK,
     action: function loginCheck(){
-        firebase.auth().onAuthStateChanged((user)=>{
+        auth.onAuthStateChanged((user)=>{
             if (user) {
                 this.state.isLogin = true;
                 this.state.uid = user.uid;
@@ -41,8 +44,7 @@ const loginCheck = {
 const signup = {
     type: SIGNUP,
     action: function signup(data){
-        firebase.auth()
-                .createUserWithEmailAndPassword(data.email, data.password)
+        auth.createUserWithEmailAndPassword(data.email, data.password)
                 .then(()=>{
                     this.emit(SIGNUP);
                 })
@@ -56,8 +58,7 @@ const signup = {
 const login = {
     type: LOGIN,
     action: function login(data){
-        firebase.auth()
-                .signInWithEmailAndPassword(data.email, data.password)
+        auth.signInWithEmailAndPassword(data.email, data.password)
                 .then(()=>{
                     this.state.isLogin = true;
                     this.emit(LOGIN);
@@ -80,7 +81,7 @@ const login = {
 const logout = {
     type: LOGOUT,
     action: function logout(){
-        firebase.auth().signOut().then(()=>{
+        auth.signOut().then(()=>{
             this.emit(LOGOUT);
         }, (error)=>{
             console.log("error! not sign out");
