@@ -8,7 +8,7 @@ const auth = firabase.auth();
 // getter setter
 export const authProps = [
     {
-        name: "uid",
+        name  : "uid",
         getter: function(){
             return this.state.uid;
         },
@@ -19,10 +19,10 @@ export const authProps = [
 ];
 
 const loginCheck = {
-    type: LOGIN_CHECK,
+    type  : LOGIN_CHECK,
     action: function loginCheck(){
-        auth.onAuthStateChanged((user)=>{
-            if (user) {
+        auth.onAuthStateChanged((user) =>{
+            if (user){
                 this.state.isLogin = true;
                 this.state.uid = user.uid;
                 this.emit(ALREADY_LOGIN);
@@ -34,7 +34,7 @@ const loginCheck = {
         });
     },
     getter: [{
-        name: "uid",
+        name  : "uid",
         action: function(){
             return this.state.uid;
         }
@@ -42,35 +42,35 @@ const loginCheck = {
 };
 
 const signup = {
-    type: SIGNUP,
+    type  : SIGNUP,
     action: function signup(data){
         auth.createUserWithEmailAndPassword(data.email, data.password)
-                .then(()=>{
-                    this.emit(SIGNUP);
-                })
-                .catch((error)=>{
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                });
+            .then(() =>{
+                this.emit(SIGNUP);
+            })
+            .catch((error) =>{
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
     }
 };
 
 const login = {
-    type: LOGIN,
+    type  : LOGIN,
     action: function login(data){
         auth.signInWithEmailAndPassword(data.email, data.password)
-                .then(()=>{
-                    this.state.isLogin = true;
-                    this.emit(LOGIN);
-                })
-                .catch((error)=>{
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(errorMessage);
-                });
+            .then(() =>{
+                this.state.isLogin = true;
+                this.emit(LOGIN);
+            })
+            .catch((error) =>{
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
     },
     getter: [{
-        name: 'isLogin',
+        name  : 'isLogin',
         action: function isLogin(){
             return this.state.isLogin;
         }
@@ -79,11 +79,11 @@ const login = {
 
 
 const logout = {
-    type: LOGOUT,
+    type  : LOGOUT,
     action: function logout(){
-        auth.signOut().then(()=>{
+        auth.signOut().then(() =>{
             this.emit(LOGOUT);
-        }, (error)=>{
+        }, (error) =>{
             console.log("error! not sign out");
         });
     }
