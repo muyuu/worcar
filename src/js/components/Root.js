@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Router, IndexRoute, Route, browserHistory } from 'react-router';
+import {Router, IndexRoute, Route, browserHistory} from 'react-router';
 
 import App from './App';
 
@@ -16,11 +16,11 @@ export default class Root extends Component {
         return (
             <Router history={browserHistory}>
                 <Route path="/" component={App}>
-                    <Route path="/signup" component={Signup} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/logout" component={Logout} />
+                    <Route path="/signup" component={Signup}/>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/logout" component={Logout}/>
 
-                    <Route path="/new" component={NewPost} />
+                    <Route path="/new" component={NewPost}/>
                 </Route>
             </Router>
         );

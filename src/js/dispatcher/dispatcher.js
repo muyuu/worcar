@@ -13,7 +13,6 @@ const stores = Object.assign(
 const props = [].concat(
     authProps,
     postProps,
-
 );
 
 const dispatcher = new EventEmitter();

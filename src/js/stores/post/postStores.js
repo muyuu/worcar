@@ -4,12 +4,11 @@ require("firebase/auth");
 import {NEW_POST, GET_USER_POSTS} from "../../actions/actionTypes";
 
 // getter setter
-export const postProps = [
-];
+export const postProps = [];
 
 
 const newPost = {
-    type: NEW_POST,
+    type  : NEW_POST,
     action: function newPost(data){
         const uid = data.uid;
 
@@ -29,15 +28,15 @@ const newPost = {
 };
 
 const getUserPosts = {
-    type: GET_USER_POSTS,
+    type  : GET_USER_POSTS,
     action: function getUserPosts(){
 
         // firebase user post ref
         const userPostsRef = firebase.database().ref(`/user-post/${this.uid}`);
 
-        userPostsRef.orderByChild('updateAt').on('value', data=>{
+        userPostsRef.orderByChild('updateAt').on('value', data =>{
             const posts = data.val();
-            const postList = Object.keys(posts).map(val=> posts[val]);
+            const postList = Object.keys(posts).map(val => posts[val]);
             this.emit(GET_USER_POSTS, postList);
         });
 
