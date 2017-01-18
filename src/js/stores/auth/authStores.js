@@ -9,12 +9,22 @@ const loginCheck = {
     action: function loginCheck(){
         firebase.auth().onAuthStateChanged((user)=>{
             if (user) {
-                this.emit(ALREADY_LOGIN, user.uid);
+                this.state.isLogin = true;
+                this.state.uid = user.uid;
+                this.emit(ALREADY_LOGIN);
             } else {
+                this.state.isLogin = false;
+                this.state.uid = null;
                 this.emit(ALREADY_LOGOUT);
             }
         });
-    }
+    },
+    getter: [{
+        name: "uid",
+        action: function(){
+            return this.state.uid;
+        }
+    }]
 };
 
 const signup = {
@@ -38,6 +48,7 @@ const login = {
         firebase.auth()
                 .signInWithEmailAndPassword(data.email, data.password)
                 .then(()=>{
+                    this.state.isLogin = true;
                     this.emit(LOGIN);
                 })
                 .catch((error)=>{
@@ -45,7 +56,13 @@ const login = {
                     const errorMessage = error.message;
                     console.log(errorMessage);
                 });
-    }
+    },
+    getter: [{
+        name: 'isLogin',
+        action: function isLogin(){
+            return this.state.isLogin;
+        }
+    }]
 };
 
 
