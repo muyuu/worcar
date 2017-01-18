@@ -3,12 +3,12 @@ import EventEmitter from "../dispatcher/EventEmitter";
 
 export default class Store extends EventEmitter {
     // dispatcherを受け取る
-    constructor(dispatcher: Object, obj: Object){
+    constructor(dispatcher: Object, obj: Object, props: Array<Object>){
         super();
-        this.isLogin = false;
+        this.state = {};
         this.attachMethod(obj, dispatcher);
+        this.setProps(props);
     }
-
 
     attachMethod(functions: Object, dispatcher: Object){
         Object.keys(functions).forEach((methodName: string) =>{
@@ -24,7 +24,11 @@ export default class Store extends EventEmitter {
         dispatcher.on(type, this[methodName].bind(this));
     }
 
-    getIsLogin(){
-        return this.isLogin;
+    setProps(getter: Array<Object>){
+        if (!getter) return;
+        getter.forEach( val => {
+            this.__defineGetter__(val.name, val.getter);
+            this.__defineSetter__(val.name, val.setter);
+        });
     }
 }
