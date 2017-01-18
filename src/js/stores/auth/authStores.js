@@ -3,7 +3,7 @@ require('../../config/firebase');
 require("firebase/auth");
 import {LOGIN_CHECK, ALREADY_LOGIN, ALREADY_LOGOUT, SIGNUP, LOGIN, LOGOUT} from "../../actions/actionTypes";
 
-const auth = firabase.auth();
+const auth = firebase.auth();
 
 // getter setter
 export const authProps = [
