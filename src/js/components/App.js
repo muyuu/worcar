@@ -12,7 +12,7 @@ export default class Layout extends Component {
         super(props);
 
         this.state = {
-            isLogin : false,
+            isLogin : store.isLogin,
             uid     : null,
             postList: [],
         };
@@ -25,12 +25,11 @@ export default class Layout extends Component {
         store.on(ALREADY_LOGOUT, this.logout.bind(this));
     }
 
-    alreadyLogin(uid){
+    alreadyLogin(){
         this.setState({
-            isLogin: true,
-            uid
+            isLogin: store.isLogin,
+            uid: store.uid
         });
-
         this.readList();
     }
 
@@ -51,7 +50,7 @@ export default class Layout extends Component {
 
     logout(){
         this.setState({
-            isLogin: false
+            isLogin: store.isLogin
         });
     }
 
