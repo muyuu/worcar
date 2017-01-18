@@ -1,4 +1,4 @@
-import {LOGIN_CHECK, SIGNUP, LOGIN, LOGOUT, NEW_POST} from "./actionTypes";
+import * as type from "./actionTypes";
 
 export default class Actions {
     constructor(dispatcher){
@@ -6,21 +6,21 @@ export default class Actions {
     }
 
     loginCheck(){
-        this.dispatcher.emit(LOGIN_CHECK);
+        this.dispatcher.emit(type.LOGIN_CHECK);
     }
 
     signup(email, password){
         const data = {email, password};
-        this.dispatcher.emit(SIGNUP, data);
+        this.dispatcher.emit(type.SIGNUP, data);
     }
 
     login(email, password){
         const data = {email, password};
-        this.dispatcher.emit(LOGIN, data);
+        this.dispatcher.emit(type.LOGIN, data);
     }
 
     logout(){
-        this.dispatcher.emit(LOGOUT);
+        this.dispatcher.emit(type.LOGOUT);
     }
 
     // --------------------------------------
@@ -29,6 +29,10 @@ export default class Actions {
     newPost(uid, post){
         const data = post;
         data.uid = uid;
-        this.dispatcher.emit(NEW_POST, data);
+        this.dispatcher.emit(type.NEW_POST, data);
+    }
+
+    getUserPosts(){
+        this.dispatcher.emit(type.GET_USER_POSTS);
     }
 }
