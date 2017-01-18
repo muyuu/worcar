@@ -3,6 +3,17 @@ require('../../config/firebase');
 require("firebase/auth");
 import {LOGIN_CHECK, ALREADY_LOGIN, ALREADY_LOGOUT, SIGNUP, LOGIN, LOGOUT} from "../../actions/actionTypes";
 
+export const authProps = [
+    {
+        name: "uid",
+        getter: function(){
+            return this.state.uid;
+        },
+        setter: function(val){
+            this.state.uid = val;
+        }
+    }
+];
 
 const loginCheck = {
     type: LOGIN_CHECK,
