@@ -5,17 +5,18 @@ export default class Store extends EventEmitter {
     // dispatcherを受け取る
     constructor(dispatcher: Object, obj: Object){
         super();
-        this.isLogin = false;
+        this.state = {};
         this.attachMethod(obj, dispatcher);
     }
-
 
     attachMethod(functions: Object, dispatcher: Object){
         Object.keys(functions).forEach((methodName: string) =>{
             const type = functions[methodName].type;
             const method = functions[methodName].action;
+            const getter = functions[methodName].getter;
 
             this.setMethod(type, methodName, method, dispatcher);
+            this.setGetter(getter);
         });
     }
 
@@ -24,7 +25,8 @@ export default class Store extends EventEmitter {
         dispatcher.on(type, this[methodName].bind(this));
     }
 
-    getIsLogin(){
-        return this.isLogin;
+    setGetter(getter: Array){
+        if (!getter) return;
+        getter.forEach( val => this.__defineGetter__(val.name, val.action) );
     }
 }
