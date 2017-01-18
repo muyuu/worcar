@@ -31,4 +31,8 @@ export default class Actions {
         data.uid = uid;
         this.dispatcher.emit(type.NEW_POST, data);
     }
+
+    getUserPosts(){
+        this.dispatcher.emit(type.GET_USER_POSTS);
+    }
 }
