@@ -11,6 +11,7 @@ import Signup from './auth/Signup';
 // post
 import NewPost from './post/NewPost';
 import DetailPost from './post/DetailPost';
+import EditPost from './post/EditPost';
 
 export default class Root extends Component {
     render(){
@@ -23,6 +24,7 @@ export default class Root extends Component {
 
                     <Route path="/new" component={NewPost}/>
                     <Route path="/post/:slug" component={DetailPost}/>
+                    <Route path="/post/:slug/edit" component={EditPost}/>
                 </Route>
             </Router>
         );
