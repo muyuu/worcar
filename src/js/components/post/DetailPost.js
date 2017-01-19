@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 
-import {action} from '../../dispatcher/dispatcher';
+import {action, store} from '../../dispatcher/dispatcher';
+import PostStateSwitchBtn from './PostStateSwitchBtn';
 
 export default class DetailPost extends Component {
     constructor(props){
         super(props);
-
         this.props = props;
 
-        action.showDetail(this.props.params.slug);
-
-        // dummy data
+        if (!this.props.showedPost){
+            action.showDetail(this.props.params.slug);
+        }
     }
 
     render(){
@@ -19,7 +19,7 @@ export default class DetailPost extends Component {
         return (
             <div className="detailPost">
                 <div className="detailPost__head">
-
+                    <PostStateSwitchBtn slug={this.props.params.slug}/>
                 </div>
 
                 <div className="detailPost__body">
