@@ -18,4 +18,3 @@ const props = [].concat(
 const dispatcher = new EventEmitter();
 export const action = new ActionCreator(dispatcher);
 export const store = new Sotre(dispatcher, stores, props);
-console.log(store);
