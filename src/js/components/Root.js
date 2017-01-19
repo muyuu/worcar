@@ -10,6 +10,7 @@ import Signup from './auth/Signup';
 
 // post
 import NewPost from './post/NewPost';
+import DetailPost from './post/DetailPost';
 
 export default class Root extends Component {
     render(){
@@ -21,6 +22,7 @@ export default class Root extends Component {
                     <Route path="/logout" component={Logout}/>
 
                     <Route path="/new" component={NewPost}/>
+                    <Route path="/post/:key" component={DetailPost}/>
                 </Route>
             </Router>
         );
