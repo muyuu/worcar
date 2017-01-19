@@ -19,8 +19,8 @@ const newPost = {
 
         data.key = newPostKey;
         data.slug = newPostSlug;
-        data.createdAt = parseInt( new Date() /1000 );
-        data.updatedAt = parseInt( new Date() /1000 );
+        data.createdAt = parseInt(new Date() / 1000);
+        data.updatedAt = parseInt(new Date() / 1000);
 
         // make new post
         const updates = {};
@@ -79,8 +79,9 @@ const getUserPosts = {
 const showDetail = {
     type  : SHOW_DETAIL,
     action: function showDetail(slug){
+        // console.log(['store show detail. this param is slug valued ', slug].join(""));
         const detailPost = firebase.database().ref(`/post-by-slug/${slug}`);
-        detailPost.on('value', data=>{
+        detailPost.on('value', data =>{
             const post = data.val();
             this.emit(SHOW_DETAIL, post);
 

@@ -10,9 +10,9 @@ export default class Layout extends Component {
         super(props);
 
         this.state = {
-            isLogin : store.isLogin,
-            uid     : null,
-            postList: [],
+            isLogin   : store.isLogin,
+            uid       : null,
+            postList  : [],
             showedPost: null,
         };
 
@@ -29,7 +29,7 @@ export default class Layout extends Component {
     alreadyLogin(){
         this.setState({
             isLogin: store.isLogin,
-            uid: store.uid
+            uid    : store.uid
         });
 
         action.getUserPosts();
@@ -52,16 +52,15 @@ export default class Layout extends Component {
     }
 
     setChildren(){
-        console.log('set children');
         let count = 0;
+        console.log(this.state);
         return Children.map(this.props.children, child =>{
             return React.cloneElement(child, Object.assign(this.state, { key: ++count }));
         });
     }
 
     showDetail(post){
-        console.log('set state showedPost');
-        this.setState({showedPost: post});
+        this.setState({ showedPost: post });
     }
 
     render(){
@@ -69,7 +68,7 @@ export default class Layout extends Component {
             <div className="app">
                 <div className="l-row">
                     <div className="l-col4 app__listview">
-                        <PostList list={this.state.postList}/>
+                        <PostList list={this.setPostList()}/>
                     </div>
                     <div className="l-col8 app__detailview">
                         {this.setChildren()}

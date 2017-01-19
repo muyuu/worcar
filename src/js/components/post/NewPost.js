@@ -10,7 +10,7 @@ export default class NewPost extends Component {
 
         this.state = {
             title: "",
-            raw: "",
+            raw  : "",
         };
 
         // binding
@@ -36,7 +36,7 @@ export default class NewPost extends Component {
         const uid = this.props.uid;
         const data = {
             title: this.state.title,
-            raw: this.state.raw,
+            raw  : this.state.raw,
         };
         action.newPost(uid, data);
     }
@@ -45,7 +45,7 @@ export default class NewPost extends Component {
         return (
             <div className="newPost">
                 <div className="newPost__title">
-                    <input type="text" onChange={this.onChangeTitle} />
+                    <input type="text" onChange={this.onChangeTitle}/>
                 </div>
                 <div className="newPost__raw">
                     <textarea name="" id="" cols="30" rows="10" onChange={this.onChangeRaw}></textarea>
