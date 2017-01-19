@@ -18,14 +18,20 @@ export default class DetailPost extends Component {
 
         return (
             <div className="detailPost">
-                <div className="detailPost__title">
-                    <div className="detailPost__caption">
-                        {this.props.showedPost.title}
-                    </div>
+                <div className="detailPost__head">
+
                 </div>
+
                 <div className="detailPost__body">
-                    <div className="detailPost__raw">
-                        {this.props.showedPost.raw}
+                    <div className="detailPost__title">
+                        <div className="detailPost__caption">
+                            {this.props.showedPost.title}
+                        </div>
+                    </div>
+                    <div className="detailPost__body">
+                        <div className="detailPost__raw">
+                            {this.props.showedPost.raw}
+                        </div>
                     </div>
                 </div>
             </div>
