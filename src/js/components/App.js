@@ -47,6 +47,10 @@ export default class Layout extends Component {
         });
     }
 
+    setPostList(){
+        return this.state.postList;
+    }
+
     setChildren(){
         console.log('set children');
         let count = 0;

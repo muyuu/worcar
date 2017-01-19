@@ -32,6 +32,13 @@ export default class Actions {
         this.dispatcher.emit(type.NEW_POST, data);
     }
 
+    updatePost(uid, key, slug, post){
+        post.uid = uid;
+        post.key = key;
+        post.slug = slug;
+        this.dispatcher.emit(type.UPDATE_POST, post);
+    }
+
     getUserPosts(){
         this.dispatcher.emit(type.GET_USER_POSTS);
     }

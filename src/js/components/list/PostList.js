@@ -8,11 +8,16 @@ export default class App extends Component {
         super(props);
     }
 
+    showDetail(e){
+        const slug = e.currentTarget.getAttribute('data-slug');
+        action.showDetail(slug);
+    }
+
     render(){
         const items = this.props.list.map(item =>{
             return (
                 <li key={item.key}>
-                    <Link to={"/post/" + item.slug}>
+                    <Link to={"/post/" + item.slug} onClick={this.showDetail} data-slug={item.slug}>
                         {item.title}
                     </Link>
                 </li>

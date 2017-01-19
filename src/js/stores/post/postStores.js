@@ -2,7 +2,7 @@ const firebase = require('firebase');
 require('../../config/firebase');
 require("firebase/auth");
 const shortid = require('shortid');
-import {NEW_POST, GET_USER_POSTS, SHOW_DETAIL} from "../../actions/actionTypes";
+import {NEW_POST, UPDATE_POST, GET_USER_POSTS, SHOW_DETAIL} from "../../actions/actionTypes";
 
 // getter setter
 export const postProps = [];
@@ -32,6 +32,27 @@ const newPost = {
         ref.update(updates);
 
         this.emit(NEW_POST);
+    }
+};
+
+const updatePost = {
+    type  : UPDATE_POST,
+    action: function updatePost(data){
+        const key = data.key;
+        const uid = data.uid;
+        const slug = data.slug;
+        data.updateAt = parseInt(new Date() / 1000);
+
+        // make new post
+        const updates = {};
+        updates[`/post/${key}`] = data;
+        updates[`/post-by-slug/${slug}`] = data;
+        updates[`/user-post/${uid}/${key}`] = data;
+
+        // post data
+        ref.update(updates);
+
+        this.emit(UPDATE_POST);
     }
 };
 
@@ -70,6 +91,7 @@ const showDetail = {
 
 export default {
     newPost,
+    updatePost,
     getUserPosts,
     showDetail,
 };
