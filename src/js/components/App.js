@@ -48,6 +48,7 @@ export default class Layout extends Component {
     }
 
     setChildren(){
+        console.log('set children');
         let count = 0;
         return Children.map(this.props.children, child =>{
             return React.cloneElement(child, Object.assign(this.state, { key: ++count }));
