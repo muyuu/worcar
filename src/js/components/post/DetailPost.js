@@ -8,7 +8,7 @@ export default class DetailPost extends Component {
 
         this.props = props;
 
-        action.showDetail(this.props.params.key);
+        action.showDetail(this.props.params.slug);
 
         // dummy data
     }

@@ -22,7 +22,7 @@ export default class Root extends Component {
                     <Route path="/logout" component={Logout}/>
 
                     <Route path="/new" component={NewPost}/>
-                    <Route path="/post/:key" component={DetailPost}/>
+                    <Route path="/post/:slug" component={DetailPost}/>
                 </Route>
             </Router>
         );
