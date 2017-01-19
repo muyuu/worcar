@@ -15,6 +15,15 @@ export const authProps = [
         setter: function(val){
             this.state.uid = val;
         }
+    },
+    {
+        name  : "isLogin",
+        getter: function(){
+            return this.state.isLogin;
+        },
+        setter: function(val){
+            this.state.isLogin = val;
+        }
     }
 ];
 
@@ -23,22 +32,16 @@ const loginCheck = {
     action: function loginCheck(){
         auth.onAuthStateChanged((user) =>{
             if (user){
-                this.state.isLogin = true;
-                this.state.uid = user.uid;
+                this.isLogin = true;
+                this.uid = user.uid;
                 this.emit(ALREADY_LOGIN);
             } else {
-                this.state.isLogin = false;
-                this.state.uid = null;
+                this.isLogin = false;
+                this.uid = null;
                 this.emit(ALREADY_LOGOUT);
             }
         });
-    },
-    getter: [{
-        name  : "uid",
-        action: function(){
-            return this.state.uid;
-        }
-    }]
+    }
 };
 
 const signup = {
@@ -60,7 +63,7 @@ const login = {
     action: function login(data){
         auth.signInWithEmailAndPassword(data.email, data.password)
             .then(() =>{
-                this.state.isLogin = true;
+                this.isLogin = true;
                 this.emit(LOGIN);
             })
             .catch((error) =>{
@@ -72,7 +75,7 @@ const login = {
     getter: [{
         name  : 'isLogin',
         action: function isLogin(){
-            return this.state.isLogin;
+            return this.isLogin;
         }
     }]
 };

@@ -35,4 +35,8 @@ export default class Actions {
     getUserPosts(){
         this.dispatcher.emit(type.GET_USER_POSTS);
     }
+
+    showDetail(key){
+        this.dispatcher.emit(type.SHOW_DETAIL, key);
+    }
 }

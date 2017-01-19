@@ -1,7 +1,7 @@
 const firebase = require('firebase');
 require('../../config/firebase');
 require("firebase/auth");
-import {NEW_POST, GET_USER_POSTS} from "../../actions/actionTypes";
+import {NEW_POST, GET_USER_POSTS, SHOW_DETAIL} from "../../actions/actionTypes";
 
 // getter setter
 export const postProps = [];
@@ -36,10 +36,26 @@ const getUserPosts = {
 
         userPostsRef.orderByChild('updateAt').on('value', data =>{
             const posts = data.val();
-            const postList = Object.keys(posts).map(val => posts[val]);
+            const postList = Object.keys(posts).map(val =>{
+                const postData = Object.assign({}, posts[val]);
+                postData.key = val;
+                return postData;
+            });
             this.emit(GET_USER_POSTS, postList);
         });
 
+    }
+};
+
+const showDetail = {
+    type  : SHOW_DETAIL,
+    action: function showDetail(key){
+        const detailPost = firebase.database().ref(`/post/${key}`);
+        detailPost.on('value', data=>{
+            const post = data.val();
+            this.emit(SHOW_DETAIL, post);
+
+        });
     }
 };
 
@@ -47,4 +63,5 @@ const getUserPosts = {
 export default {
     newPost,
     getUserPosts,
+    showDetail,
 };
