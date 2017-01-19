@@ -1,7 +1,7 @@
 const firebase = require('firebase');
 require('../../config/firebase');
 require("firebase/auth");
-import {NEW_POST, GET_USER_POSTS} from "../../actions/actionTypes";
+import {NEW_POST, GET_USER_POSTS, SHOW_DETAIL} from "../../actions/actionTypes";
 
 // getter setter
 export const postProps = [];
@@ -43,8 +43,21 @@ const getUserPosts = {
     }
 };
 
+const showDetail = {
+    type  : SHOW_DETAIL,
+    action: function showDetail(key){
+        const detailPost = firebase.database().ref(`/post/${key}`);
+        detailPost.on('value', data=>{
+            const post = data.val();
+            this.emit(SHOW_DETAIL, post);
+
+        });
+    }
+};
+
 
 export default {
     newPost,
     getUserPosts,
+    showDetail,
 };
