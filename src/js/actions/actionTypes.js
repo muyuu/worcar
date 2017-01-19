@@ -6,6 +6,9 @@ export const SIGNUP = 'SIGNUP';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 
+// List
+export const SHOW_DETAIL = 'SHOW_DETAIL';
+
 // Post
 export const NEW_POST = 'NEW_POST';
 export const UPDATE_POST = 'UPDATE_POST';
