@@ -1,20 +1,27 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
+
+import {action} from '../../dispatcher/dispatcher';
 
 export default class App extends Component {
     constructor(props){
         super(props);
-
-        // binding
-        this.showDetail = this.showDetail.bind(this);
     }
 
-    showDetail(){
+    showDetail(e){
+        const key = e.currentTarget.getAttribute('data-key');
+        action.showDetail(key);
     }
 
     render(){
-        // console.log(this.props);
-        const items = this.props.list.map((item, key) =>{
-            return <li onClick={this.showDetail()} key={(key+1).toString()}>{item.title}</li>;
+        const items = this.props.list.map(item =>{
+            return (
+                <li key={item.key}>
+                    <Link to={"/post/" + item.key} onClick={this.showDetail} data-key={item.key}>
+                        {item.title}
+                    </Link>
+                </li>
+            );
         });
 
         return (
