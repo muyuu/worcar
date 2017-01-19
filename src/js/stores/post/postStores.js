@@ -36,7 +36,11 @@ const getUserPosts = {
 
         userPostsRef.orderByChild('updateAt').on('value', data =>{
             const posts = data.val();
-            const postList = Object.keys(posts).map(val => posts[val]);
+            const postList = Object.keys(posts).map(val =>{
+                const postData = Object.assign({}, posts[val]);
+                postData.key = val;
+                return postData;
+            });
             this.emit(GET_USER_POSTS, postList);
         });
 
