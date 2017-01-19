@@ -1,7 +1,8 @@
 {
   "name": "worcar",
   "version": "0.0.1",
-  "description": "",
+  "description": "Word Dictionaly Tool for language beginners.",
+  "repository": "https://github.com/muyuu/worcar/",
   "main": "index.js",
   "scripts": {
     "build:js": "browserify src/js/index.js -g uglifyify --standalone Main -o dist/index.js -t [ babelify --presets [ es2015 ] --plugins [ babel-plugin-transform-flow-strip-types ] ] -t espowerify",
@@ -38,6 +39,7 @@
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-router": "^3.0.1",
+    "shortid": "^2.2.6",
     "standby.css": "^1.1.1",
     "uglifyify": "^3.0.4",
     "watchify": "^3.8.0"
