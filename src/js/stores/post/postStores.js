@@ -1,6 +1,7 @@
 const firebase = require('firebase');
 require('../../config/firebase');
 require("firebase/auth");
+const shortid = require('shortid');
 import {NEW_POST, GET_USER_POSTS, SHOW_DETAIL} from "../../actions/actionTypes";
 
 // getter setter
@@ -14,10 +15,15 @@ const newPost = {
 
         const ref = firebase.database().ref();
         const newPostKey = ref.child('post').push().key;
+        const newPostSlug = shortid.generate();
+
+        data.key = newPostKey;
+        data.slug = newPostSlug;
 
         // make new post
         const updates = {};
         updates[`/post/${newPostKey}`] = data;
+        updates[`/post-by-slug/${newPostSlug}`] = data;
         updates[`/user-post/${uid}/${newPostKey}`] = data;
 
         // post data
