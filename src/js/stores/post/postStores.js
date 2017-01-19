@@ -19,6 +19,8 @@ const newPost = {
 
         data.key = newPostKey;
         data.slug = newPostSlug;
+        data.createdAt = parseInt( new Date() /1000 );
+        data.updatedAt = parseInt( new Date() /1000 );
 
         // make new post
         const updates = {};

@@ -33,13 +33,11 @@ export default class NewPost extends Component {
     }
 
     addPost(){
+        const uid = this.props.uid;
         const data = {
             title: this.state.title,
             raw: this.state.raw,
-            createdAt: parseInt( new Date() /1000 ),
-            updatedAt: parseInt( new Date() /1000 ),
         };
-        const uid = this.props.uid;
         action.newPost(uid, data);
     }
 
