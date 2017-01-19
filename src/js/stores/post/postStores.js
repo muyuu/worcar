@@ -57,8 +57,8 @@ const getUserPosts = {
 
 const showDetail = {
     type  : SHOW_DETAIL,
-    action: function showDetail(key){
-        const detailPost = firebase.database().ref(`/post/${key}`);
+    action: function showDetail(slug){
+        const detailPost = firebase.database().ref(`/post-by-slug/${slug}`);
         detailPost.on('value', data=>{
             const post = data.val();
             this.emit(SHOW_DETAIL, post);

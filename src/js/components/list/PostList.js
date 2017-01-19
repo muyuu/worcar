@@ -12,7 +12,7 @@ export default class App extends Component {
         const items = this.props.list.map(item =>{
             return (
                 <li key={item.key}>
-                    <Link to={"/post/" + item.key} data-key={item.key}>
+                    <Link to={"/post/" + item.slug}>
                         {item.title}
                     </Link>
                 </li>
