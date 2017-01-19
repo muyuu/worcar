@@ -7,13 +7,13 @@ import {NEW_POST, GET_USER_POSTS, SHOW_DETAIL} from "../../actions/actionTypes";
 // getter setter
 export const postProps = [];
 
+const ref = firebase.database().ref();
 
 const newPost = {
     type  : NEW_POST,
     action: function newPost(data){
         const uid = data.uid;
 
-        const ref = firebase.database().ref();
         const newPostKey = ref.child('post').push().key;
         const newPostSlug = shortid.generate();
 
