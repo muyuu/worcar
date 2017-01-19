@@ -56,9 +56,8 @@ export default class Layout extends Component {
     }
 
     showDetail(post){
-        console.log('showd detail');
+        console.log('set state showedPost');
         this.setState({showedPost: post});
-        console.log(this.state);
     }
 
     render(){
