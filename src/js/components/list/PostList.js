@@ -8,16 +8,11 @@ export default class App extends Component {
         super(props);
     }
 
-    showDetail(e){
-        const key = e.currentTarget.getAttribute('data-key');
-        action.showDetail(key);
-    }
-
     render(){
         const items = this.props.list.map(item =>{
             return (
                 <li key={item.key}>
-                    <Link to={"/post/" + item.key} onClick={this.showDetail} data-key={item.key}>
+                    <Link to={"/post/" + item.key} data-key={item.key}>
                         {item.title}
                     </Link>
                 </li>
