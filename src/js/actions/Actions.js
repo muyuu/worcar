@@ -10,12 +10,12 @@ export default class Actions {
     }
 
     signup(email, password){
-        const data = {email, password};
+        const data = { email, password };
         this.dispatcher.emit(type.SIGNUP, data);
     }
 
     login(email, password){
-        const data = {email, password};
+        const data = { email, password };
         this.dispatcher.emit(type.LOGIN, data);
     }
 
@@ -43,7 +43,8 @@ export default class Actions {
         this.dispatcher.emit(type.GET_USER_POSTS);
     }
 
-    showDetail(key){
-        this.dispatcher.emit(type.SHOW_DETAIL, key);
+    showDetail(slug){
+        // console.log(['action show detail. slug is ', slug].join(""));
+        this.dispatcher.emit(type.SHOW_DETAIL, slug);
     }
 }
