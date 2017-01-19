@@ -8,23 +8,30 @@ export default class DetailPost extends Component {
 
         this.props = props;
 
+        action.showDetail(this.props.params.slug);
+
         // dummy data
-        console.log(this.props);
-        this.title = this.props.title;
-        this.raw = this.props.raw;
     }
 
     render(){
+        if (this.props.showedPost === null) return (<div/>);
+
         return (
             <div className="detailPost">
-                <div className="detailPost__title">
-                    <div className="detailPost__caption">
-                        {this.title}
-                    </div>
+                <div className="detailPost__head">
+
                 </div>
+
                 <div className="detailPost__body">
-                    <div className="detailPost__raw">
-                        {this.raw}
+                    <div className="detailPost__title">
+                        <div className="detailPost__caption">
+                            {this.props.showedPost.title}
+                        </div>
+                    </div>
+                    <div className="detailPost__body">
+                        <div className="detailPost__raw">
+                            {this.props.showedPost.raw}
+                        </div>
                     </div>
                 </div>
             </div>
