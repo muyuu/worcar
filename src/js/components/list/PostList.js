@@ -16,8 +16,12 @@ export default class App extends Component {
     render(){
         const items = this.props.list.map(item =>{
             return (
-                <li key={item.key}>
-                    <Link to={"/post/" + item.slug} onClick={this.showDetail} data-slug={item.slug}>
+                <li key={item.key} className="item">
+                    <Link
+                        to={"/post/" + item.slug}
+                        onClick={this.showDetail}
+                        data-slug={item.slug}
+                    >
                         {item.title}
                     </Link>
                 </li>

@@ -43,6 +43,10 @@ export default class Actions {
         this.dispatcher.emit(type.UPDATE_POST, post);
     }
 
+    changeDetailType(type){
+        this.dispatcher.emit(type.CHANGE_DETAIL_TYPE, type);
+    }
+
     getUserPosts(){
         this.dispatcher.emit(type.GET_USER_POSTS);
     }
