@@ -10,45 +10,21 @@ export default class EditPost extends Component {
         this.props = props;
 
         if (!this.props.showedPost){
-            console.log('run action show detail');
             action.showDetail(this.props.params.slug);
         }
 
-        const title = this.props.showedPost ? this.props.showedPost.title : "";
-        const raw = this.props.showedPost ? this.props.showedPost.raw : "";
-        this.state = {
-            title: title,
-            raw  : raw,
-        };
-
         // binding
         this.updatePost = this.updatePost.bind(this);
-        this.onChangeTitle = this.onChangeTitle.bind(this);
-        this.onChangeRaw = this.onChangeRaw.bind(this);
-
-        console.log('constructor');
     }
 
-
-    onChangeTitle(e){
-        this.setState({
-            title: e.target.value
-        });
-    }
-
-    onChangeRaw(e){
-        this.setState({
-            raw: e.target.value
-        });
-    }
 
     updatePost(){
         const uid = this.props.uid;
         const key = this.props.showedPost.key;
         const slug = this.props.params.slug;
         const data = {
-            title: this.state.title,
-            raw  : this.state.raw,
+            title: this.title.value,
+            raw  : this.raw.value,
         };
 
         action.updatePost(uid, key, slug, data);
@@ -67,7 +43,7 @@ export default class EditPost extends Component {
                     <div className="detailPost__title">
                         <div className="detailPost__caption">
                             <input type="text"
-                                onChange={this.onChangeTitle}
+                                ref={(title) => this.title = title}
                                 defaultValue={this.props.showedPost.title}
                             />
                         </div>
@@ -75,7 +51,7 @@ export default class EditPost extends Component {
                     <div className="detailPost__body">
                         <div className="detailPost__raw">
                             <textarea name="" id="" cols="30" rows="10"
-                                onChange={this.onChangeRaw}
+                                ref={(raw) => this.raw = raw}
                                 defaultValue={this.props.showedPost.raw}
                             >
                             </textarea>
