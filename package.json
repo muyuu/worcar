@@ -38,6 +38,7 @@
     "power-assert": "^1.4.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
+    "react-markdown": "^2.4.4",
     "react-router": "^3.0.1",
     "shortid": "^2.2.6",
     "standby.css": "^1.1.1",
