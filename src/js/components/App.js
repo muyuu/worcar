@@ -75,11 +75,11 @@ export default class Layout extends Component {
     render(){
         return (
             <div className="app">
-                <div className="l-row">
-                    <div className="l-col4 app__listview">
+                <div className="panels">
+                    <div className="panel panel--list">
                         <PostList list={this.setPostList()}/>
                     </div>
-                    <div className="l-col8 app__detailview">
+                    <div className="panel panel--content">
                         {this.setChildren()}
                     </div>
                 </div>
