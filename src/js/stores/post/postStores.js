@@ -79,7 +79,6 @@ const getUserPosts = {
 const showDetail = {
     type  : SHOW_DETAIL,
     action: function showDetail(slug){
-        // console.log(['store show detail. this param is slug valued ', slug].join(""));
         const detailPost = firebase.database().ref(`/post-by-slug/${slug}`);
         detailPost.on('value', data =>{
             const post = data.val();

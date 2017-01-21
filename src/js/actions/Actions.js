@@ -5,6 +5,9 @@ export default class Actions {
         this.dispatcher = dispatcher;
     }
 
+    // --------------------------------------
+    // auth
+    // --------------------------------------
     loginCheck(){
         this.dispatcher.emit(type.LOGIN_CHECK);
     }
@@ -22,6 +25,7 @@ export default class Actions {
     logout(){
         this.dispatcher.emit(type.LOGOUT);
     }
+
 
     // --------------------------------------
     // post
@@ -44,7 +48,6 @@ export default class Actions {
     }
 
     showDetail(slug){
-        // console.log(['action show detail. slug is ', slug].join(""));
         this.dispatcher.emit(type.SHOW_DETAIL, slug);
     }
 }
