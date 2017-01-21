@@ -21,6 +21,7 @@ export default class App extends Component {
                         to={"/post/" + item.slug}
                         onClick={this.showDetail}
                         data-slug={item.slug}
+                        className="item__link"
                     >
                         {item.title}
                     </Link>
@@ -29,7 +30,7 @@ export default class App extends Component {
         });
 
         return (
-            <ul>
+            <ul className="items">
                 {items}
             </ul>
         );

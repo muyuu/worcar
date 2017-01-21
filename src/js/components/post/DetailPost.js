@@ -17,19 +17,19 @@ export default class DetailPost extends Component {
         if (this.props.showedPost === null) return (<div/>);
 
         return (
-            <div className="detailPost">
-                <div className="detailPost__head">
+            <div className="post">
+                <div className="post__head">
                     <PostStateSwitchBtn slug={this.props.params.slug} showType={this.props.showType}/>
                 </div>
 
-                <div className="detailPost__body">
-                    <div className="detailPost__title">
-                        <div className="detailPost__caption">
+                <div className="post__body">
+                    <div className="post__title">
+                        <div className="post__caption">
                             {this.props.showedPost.title}
                         </div>
                     </div>
-                    <div className="detailPost__body">
-                        <div className="detailPost__raw">
+                    <div className="post__content">
+                        <div className="post__raw markdown">
                             <ReactMarkdown source={this.props.showedPost.raw}/>
                         </div>
                     </div>
