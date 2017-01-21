@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {action} from '../../dispatcher/dispatcher';
 import PostStateSwitchBtn from './PostStateSwitchBtn';
 
-export default class DetailPost extends Component {
+export default class EditPost extends Component {
     constructor(props){
         super(props);
 
