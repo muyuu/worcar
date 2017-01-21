@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-
-import {action, store} from '../../dispatcher/dispatcher';
+const ReactMarkdown = require('react-markdown');
+import {action} from '../../dispatcher/dispatcher';
 import PostStateSwitchBtn from './PostStateSwitchBtn';
 
 export default class DetailPost extends Component {
@@ -30,7 +30,7 @@ export default class DetailPost extends Component {
                     </div>
                     <div className="detailPost__body">
                         <div className="detailPost__raw">
-                            {this.props.showedPost.raw}
+                            <ReactMarkdown source={this.props.showedPost.raw}/>
                         </div>
                     </div>
                 </div>
