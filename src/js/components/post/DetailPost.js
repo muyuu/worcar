@@ -19,7 +19,7 @@ export default class DetailPost extends Component {
         return (
             <div className="detailPost">
                 <div className="detailPost__head">
-                    <PostStateSwitchBtn slug={this.props.params.slug}/>
+                    <PostStateSwitchBtn slug={this.props.params.slug} showType={this.props.showType}/>
                 </div>
 
                 <div className="detailPost__body">

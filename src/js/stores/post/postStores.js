@@ -2,7 +2,7 @@ const firebase = require('firebase');
 require('../../config/firebase');
 require("firebase/auth");
 const shortid = require('shortid');
-import {NEW_POST, UPDATE_POST, GET_USER_POSTS, SHOW_DETAIL} from "../../actions/actionTypes";
+import {NEW_POST, UPDATE_POST, CHANGE_DETAIL_TYPE, GET_USER_POSTS, SHOW_DETAIL} from "../../actions/actionTypes";
 
 // getter setter
 export const postProps = [];
@@ -56,6 +56,13 @@ const updatePost = {
     }
 };
 
+const changeDetailType = {
+    type: CHANGE_DETAIL_TYPE,
+    action: function changeDetailType(type){
+        this.emit(CHANGE_DETAIL_TYPE, type);
+    }
+};
+
 const getUserPosts = {
     type  : GET_USER_POSTS,
     action: function getUserPosts(){
@@ -83,7 +90,6 @@ const showDetail = {
         detailPost.on('value', data =>{
             const post = data.val();
             this.emit(SHOW_DETAIL, post);
-
         });
     }
 };

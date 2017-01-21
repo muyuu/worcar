@@ -12,6 +12,7 @@ export const SHOW_DETAIL = 'SHOW_DETAIL';
 // Post
 export const NEW_POST = 'NEW_POST';
 export const UPDATE_POST = 'UPDATE_POST';
+export const CHANGE_DETAIL_TYPE = 'CHANGE_DETAIL_TYPE';
 
 export const GET_USER_POSTS = 'GET_USER_POSTS';
 
