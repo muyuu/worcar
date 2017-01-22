@@ -58,8 +58,8 @@ const updatePost = {
 
 const changeDetailType = {
     type: CHANGE_DETAIL_TYPE,
-    action: function changeDetailType(type){
-        this.emit(CHANGE_DETAIL_TYPE, type);
+    action: function changeDetailType(showType){
+        this.emit(CHANGE_DETAIL_TYPE, showType);
     }
 };
 
@@ -100,4 +100,5 @@ export default {
     updatePost,
     getUserPosts,
     showDetail,
+    changeDetailType,
 };
