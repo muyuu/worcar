@@ -51,7 +51,8 @@ export default class Actions {
         this.dispatcher.emit(type.GET_USER_POSTS);
     }
 
-    showDetail(slug){
-        this.dispatcher.emit(type.SHOW_DETAIL, slug);
+    showDetail(slug, showType){
+        const data = {slug, showType}
+        this.dispatcher.emit(type.SHOW_DETAIL, data);
     }
 }

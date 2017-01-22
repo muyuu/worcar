@@ -8,7 +8,7 @@ export default class DetailPost extends Component {
         super(props);
 
         if (!this.props.showedPost){
-            action.showDetail(this.props.params.slug);
+            action.showDetail(this.props.params.slug, 'view');
         }
     }
 
