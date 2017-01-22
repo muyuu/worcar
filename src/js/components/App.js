@@ -48,10 +48,6 @@ export default class Layout extends Component {
         });
     }
 
-    setPostList(){
-        return this.state.postList;
-    }
-
     setChildren(){
         let count = 0;
         return Children.map(this.props.children, child =>{
@@ -77,7 +73,7 @@ export default class Layout extends Component {
             <div className="app">
                 <div className="panels">
                     <div className="panel panel--list">
-                        <PostList list={this.setPostList()}/>
+                        <PostList list={this.state.postList}/>
                     </div>
                     <div className="panel panel--content">
                         {this.setChildren()}

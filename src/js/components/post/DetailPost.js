@@ -6,7 +6,6 @@ import PostStateSwitchBtn from './PostStateSwitchBtn';
 export default class DetailPost extends Component {
     constructor(props){
         super(props);
-        this.props = props;
 
         if (!this.props.showedPost){
             action.showDetail(this.props.params.slug);

@@ -5,8 +5,6 @@ import {action} from '../../dispatcher/dispatcher';
 export default class DetailPost extends Component {
     constructor(props){
         super(props);
-
-        this.props = props;
     }
 
     changeDetailType(e){
@@ -17,6 +15,7 @@ export default class DetailPost extends Component {
     render(){
         let post = <div/>;
         let edit = <div/>;
+
         if(this.props.showType === 'edit'){
             post = <Link
                     to={"/post/" + this.props.slug}
