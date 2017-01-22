@@ -55,16 +55,16 @@ export default class Layout extends Component {
         });
     }
 
-    showDetail(post){
+    showDetail(post, showType){
         this.setState({
             showedPost: post,
-            showType: 'view',
+            showType: showType,
         });
     }
 
-    changeDetailType(type){
+    changeDetailType(showType){
         this.setState({
-            showType: type,
+            showType: showType,
         });
     }
 
