@@ -7,8 +7,6 @@ export default class EditPost extends Component {
     constructor(props){
         super(props);
 
-        this.props = props;
-
         if (!this.props.showedPost){
             action.showDetail(this.props.params.slug);
         }
