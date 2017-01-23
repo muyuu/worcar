@@ -2512,7 +2512,6 @@ html, body {
     align-items: stretch; }
   .post__content {
     overflow: hidden;
-    height: 100%;
     flex-grow: 1;
     padding: 0 1.5em; }
   .post__title {
@@ -2529,9 +2528,20 @@ html, body {
   .post--edit .post__body {
     padding-bottom: 0; }
   .post--edit .post__content {
+    height: 100%;
     padding: 0; }
+  .post--edit .post__caption:focus,
+  .post--edit .post__raw:focus {
+    outline: none !important;
+    box-shadow: none !important; }
+  .post--edit .post__caption:focus {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important; }
   .post--edit .post__raw {
     padding: 1em 1.5em; }
+    .post--edit .post__raw:focus {
+      border: none !important; }
 
 .btn {
   display: inline-block;
