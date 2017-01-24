@@ -3,12 +3,12 @@ import ActionCreator from '../actions/Actions';
 import Sotre from '../stores/Stores';
 
 // set stores
-import authSotre, {authProps} from '../stores/auth/authStores';
-import postSotre, {postProps} from '../stores/post/postStores';
+import authStore, {authProps} from '../stores/auth/authStores';
+import postStore, {postProps} from '../stores/post/postStores';
 const stores = Object.assign(
     {},
-    authSotre,
-    postSotre,
+    authStore,
+    postStore,
 );
 const props = [].concat(
     authProps,
