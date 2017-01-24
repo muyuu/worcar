@@ -7,10 +7,8 @@ export default class EditPost extends Component {
     constructor(props){
         super(props);
 
-        this.props = props;
-
         if (!this.props.showedPost){
-            action.showDetail(this.props.params.slug);
+            action.showDetail(this.props.params.slug, 'edit');
         }
 
         // binding
@@ -34,30 +32,30 @@ export default class EditPost extends Component {
         if (this.props.showedPost === null) return (<div/>);
 
         return (
-            <div className="detailPost">
-                <div className="detailPost__head">
+            <div className="post post--edit">
+                <div className="post__head">
                     <PostStateSwitchBtn slug={this.props.params.slug} showType={this.props.showType}/>
                 </div>
 
-                <div className="detailPost__body">
-                    <div className="detailPost__title">
-                        <div className="detailPost__caption">
+                <div className="post__body">
+                    <div className="post__inner">
+                        <div className="post__title">
                             <input type="text"
                                 ref={(title) => this.title = title}
+                                className="post__caption"
                                 defaultValue={this.props.showedPost.title}
                             />
                         </div>
-                    </div>
-                    <div className="detailPost__body">
-                        <div className="detailPost__raw">
+                        <div className="post__content">
                             <textarea name="" id="" cols="30" rows="10"
+                                className="post__raw"
                                 ref={(raw) => this.raw = raw}
                                 defaultValue={this.props.showedPost.raw}
                             >
                             </textarea>
                         </div>
                     </div>
-                    <div className="detailPost__btn">
+                    <div className="post__btn">
                         <button onClick={this.updatePost}>update</button>
                     </div>
                 </div>

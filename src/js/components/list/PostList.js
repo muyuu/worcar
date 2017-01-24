@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-
 import {action} from '../../dispatcher/dispatcher';
 
-export default class App extends Component {
+export default class PostList extends Component {
     constructor(props){
         super(props);
     }
@@ -21,6 +20,7 @@ export default class App extends Component {
                         to={"/post/" + item.slug}
                         onClick={this.showDetail}
                         data-slug={item.slug}
+                        className="item__link"
                     >
                         {item.title}
                     </Link>
@@ -29,7 +29,7 @@ export default class App extends Component {
         });
 
         return (
-            <ul>
+            <ul className="items">
                 {items}
             </ul>
         );

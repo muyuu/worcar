@@ -48,6 +48,12 @@ export default class Layout extends Component {
         });
     }
 
+    getUserPosts(data){
+        this.setState({
+            postList: data
+        });
+    }
+
     setPostList(){
         return this.state.postList;
     }
@@ -59,27 +65,27 @@ export default class Layout extends Component {
         });
     }
 
-    showDetail(post){
+    showDetail(post, showType){
         this.setState({
             showedPost: post,
-            showType: 'view',
+            showType: showType,
         });
     }
 
-    changeDetailType(type){
+    changeDetailType(showType){
         this.setState({
-            showType: type,
+            showType: showType,
         });
     }
 
     render(){
         return (
             <div className="app">
-                <div className="l-row">
-                    <div className="l-col4 app__listview">
-                        <PostList list={this.setPostList()}/>
+                <div className="panels">
+                    <div className="panel panel--list">
+                        <PostList list={this.state.postList}/>
                     </div>
-                    <div className="l-col8 app__detailview">
+                    <div className="panel panel--content">
                         {this.setChildren()}
                     </div>
                 </div>
