@@ -58,8 +58,8 @@ const updatePost = {
 
 const changeDetailType = {
     type: CHANGE_DETAIL_TYPE,
-    action: function changeDetailType(type){
-        this.emit(CHANGE_DETAIL_TYPE, type);
+    action: function changeDetailType(showType){
+        this.emit(CHANGE_DETAIL_TYPE, showType);
     }
 };
 
@@ -85,11 +85,12 @@ const getUserPosts = {
 
 const showDetail = {
     type  : SHOW_DETAIL,
-    action: function showDetail(slug){
+    action: function showDetail(data){
+        const {slug, showType} = data;
         const detailPost = firebase.database().ref(`/post-by-slug/${slug}`);
         detailPost.on('value', data =>{
             const post = data.val();
-            this.emit(SHOW_DETAIL, post);
+            this.emit(SHOW_DETAIL, post, showType);
         });
     }
 };
@@ -100,4 +101,5 @@ export default {
     updatePost,
     getUserPosts,
     showDetail,
+    changeDetailType,
 };

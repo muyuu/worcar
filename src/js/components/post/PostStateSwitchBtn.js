@@ -1,22 +1,21 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import {action} from '../../actions/Actions';
+import {action} from '../../dispatcher/dispatcher';
 
 export default class DetailPost extends Component {
     constructor(props){
         super(props);
-
-        this.props = props;
     }
 
-    changeDetailType(){
-        const type = this.attribute('data-type');
+    changeDetailType(e){
+        const type = e.currentTarget.getAttribute('data-type');
         action.changeDetailType(type);
     }
 
     render(){
         let post = <div/>;
         let edit = <div/>;
+
         if(this.props.showType === 'edit'){
             post = <Link
                     to={"/post/" + this.props.slug}
