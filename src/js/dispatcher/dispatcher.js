@@ -1,6 +1,6 @@
 import EventEmitter from './EventEmitter';
 import ActionCreator from '../actions/Actions';
-import Sotre from '../stores/Stores';
+import Store from '../stores/Stores';
 
 // set stores
 import authStore, {authProps} from '../stores/auth/authStores';
@@ -17,4 +17,4 @@ const props = [].concat(
 
 const dispatcher = new EventEmitter();
 export const action = new ActionCreator(dispatcher);
-export const store = new Sotre(dispatcher, stores, props);
+export const store = new Store(dispatcher, stores, props);
