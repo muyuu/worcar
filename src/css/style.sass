@@ -3,14 +3,23 @@
 // ----------------------------------
 // initial
 // ----------------------------------
+@import "./conf/colors"
 
 // include npm sass sets
 @import "../../node_modules/standby.css/sass/standby.sass"
 
+
+*
+    box-sizing: border-box
+
 html, body
     height: 100%
+    color: $normal-color
 
 
 @import "./app/app"
-.app
-    height: 100%
+@import "./app/panel"
+@import "./app/item"
+@import "./app/post"
+@import "./app/btn"
+@import "./app/markdonw"
