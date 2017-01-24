@@ -48,6 +48,16 @@ export default class Layout extends Component {
         });
     }
 
+    getUserPosts(data){
+        this.setState({
+            postList: data
+        });
+    }
+
+    setPostList(){
+        return this.state.postList;
+    }
+
     setChildren(){
         let count = 0;
         return Children.map(this.props.children, child =>{
