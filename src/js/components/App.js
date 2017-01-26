@@ -1,6 +1,5 @@
 import React, {Component, Children} from 'react';
 import {action, store} from '../dispatcher/dispatcher';
-import {ALREADY_LOGIN, ALREADY_LOGOUT, GET_USER_POSTS, SHOW_DETAIL, CHANGE_DETAIL_TYPE} from "../actions/actionTypes";
 
 import PostList from './list/PostList';
 
@@ -20,55 +19,22 @@ export default class Layout extends Component {
         action.loginCheck();
 
         // subscribe
-        store.on(ALREADY_LOGIN, this.alreadyLogin.bind(this));
-        store.on(ALREADY_LOGOUT, this.logout.bind(this));
-        store.on(GET_USER_POSTS, this.getUserPosts.bind(this));
-        store.on(SHOW_DETAIL, this.showDetail.bind(this));
-        store.on(CHANGE_DETAIL_TYPE, this.changeDetailType.bind(this));
+        store.on('UPDATE_STORE', this.updateState.bind(this));
     }
 
-    alreadyLogin(){
-        this.setState({
-            isLogin: store.isLogin,
-            uid    : store.uid
-        });
+    updateState(newState){
+        this.setState(newState);
 
-        action.getUserPosts();
-    }
-
-    logout(){
-        this.setState({
-            isLogin: store.isLogin
-        });
-    }
-
-    getUserPosts(data){
-        this.setState({
-            postList: data
-        });
-    }
-
-    setPostList(){
-        return this.state.postList;
+        // 一覧見取得時は取得
+        if (this.state.isLogin && !this.state.isGetUserPosts){
+            action.getUserPosts();
+        }
     }
 
     setChildren(){
         let count = 0;
         return Children.map(this.props.children, child =>{
             return React.cloneElement(child, Object.assign(this.state, { key: ++count }));
-        });
-    }
-
-    showDetail(post, showType){
-        this.setState({
-            showedPost: post,
-            showType: showType,
-        });
-    }
-
-    changeDetailType(showType){
-        this.setState({
-            showType: showType,
         });
     }
 
