@@ -59,7 +59,9 @@ const updatePost = {
 const changeDetailType = {
     type: CHANGE_DETAIL_TYPE,
     action: function changeDetailType(showType){
-        this.emit(CHANGE_DETAIL_TYPE, showType);
+        this.setState({
+            showType
+        });
     }
 };
 
@@ -77,7 +79,11 @@ const getUserPosts = {
                 postData.key = val;
                 return postData;
             });
-            this.emit(GET_USER_POSTS, postList);
+
+            this.setState({
+                postList,
+                isGetUserPosts: true
+            });
         });
 
     }
@@ -90,7 +96,10 @@ const showDetail = {
         const detailPost = firebase.database().ref(`/post-by-slug/${slug}`);
         detailPost.on('value', data =>{
             const post = data.val();
-            this.emit(SHOW_DETAIL, post, showType);
+            this.setState({
+                showedPost: post,
+                showType: showType,
+            });
         });
     }
 };
