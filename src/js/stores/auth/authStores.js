@@ -32,13 +32,15 @@ const loginCheck = {
     action: function loginCheck(){
         auth.onAuthStateChanged((user) =>{
             if (user){
-                this.isLogin = true;
-                this.uid = user.uid;
-                this.emit(ALREADY_LOGIN);
+                this.setState({
+                    isLogin: true,
+                    uid    : user.uid,
+                });
             } else {
-                this.isLogin = false;
-                this.uid = null;
-                this.emit(ALREADY_LOGOUT);
+                this.setState({
+                    isLogin: false,
+                    uid    : null,
+                });
             }
         });
     }
@@ -62,33 +64,23 @@ const login = {
     type  : LOGIN,
     action: function login(data){
         auth.signInWithEmailAndPassword(data.email, data.password)
-            .then(() =>{
-                this.isLogin = true;
-                this.emit(LOGIN);
-            })
             .catch((error) =>{
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorMessage);
             });
-    },
-    getter: [{
-        name  : 'isLogin',
-        action: function isLogin(){
-            return this.isLogin;
-        }
-    }]
+    }
 };
 
 
 const logout = {
     type  : LOGOUT,
     action: function logout(){
-        auth.signOut().then(() =>{
-            this.emit(LOGOUT);
-        }, (error) =>{
-            console.log("error! not sign out");
-        });
+        auth.signOut()
+            .then(() =>{
+            },(error) =>{
+                console.log("error! not sign out");
+            });
     }
 };
 
