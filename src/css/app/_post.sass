@@ -64,28 +64,29 @@
     // modifier
     // ---------------------------------------------
     &--edit
-        #{$this}__body
-            padding:
-                bottom: 0
+        #{$this}
+            &__body
+                padding:
+                    bottom: 0
 
-        #{$this}__content
-            height: 100%
-            padding: 0
+            &__content
+                height: 100%
+                padding: 0
 
-        #{$this}__caption,
-        #{$this}__raw
-            &:focus
-                outline: none !important
-                box-shadow: none !important
+            &__caption,
+            &__raw
+                &:focus
+                    outline: none !important
+                    box-shadow: none !important
 
-        #{$this}__caption
-            &:focus
-                border:
-                    top: none !important
-                    left: none !important
-                    right: none !important
+            &__caption
+                &:focus
+                    border:
+                        top: none !important
+                        left: none !important
+                        right: none !important
 
-        #{$this}__raw
-            padding: 1em 1.5em
-            &:focus
-                border: none !important
+            &__raw
+                padding: 1em 1.5em
+                &:focus
+                    border: none !important

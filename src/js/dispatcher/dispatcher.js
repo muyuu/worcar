@@ -1,14 +1,14 @@
 import EventEmitter from './EventEmitter';
 import ActionCreator from '../actions/Actions';
-import Sotre from '../stores/Stores';
+import Store from '../stores/Stores';
 
 // set stores
-import authSotre, {authProps} from '../stores/auth/authStores';
-import postSotre, {postProps} from '../stores/post/postStores';
+import authStore, {authProps} from '../stores/auth/authStores';
+import postStore, {postProps} from '../stores/post/postStores';
 const stores = Object.assign(
     {},
-    authSotre,
-    postSotre,
+    authStore,
+    postStore,
 );
 const props = [].concat(
     authProps,
@@ -17,4 +17,4 @@ const props = [].concat(
 
 const dispatcher = new EventEmitter();
 export const action = new ActionCreator(dispatcher);
-export const store = new Sotre(dispatcher, stores, props);
+export const store = new Store(dispatcher, stores, props);

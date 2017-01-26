@@ -52,7 +52,7 @@ export default class Actions {
     }
 
     showDetail(slug, showType){
-        const data = {slug, showType}
+        const data = {slug, showType};
         this.dispatcher.emit(type.SHOW_DETAIL, data);
     }
 }

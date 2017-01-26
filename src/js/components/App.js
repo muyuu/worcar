@@ -48,12 +48,6 @@ export default class Layout extends Component {
         });
     }
 
-    getUserPosts(data){
-        this.setState({
-            postList: data
-        });
-    }
-
     setPostList(){
         return this.state.postList;
     }
