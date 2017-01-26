@@ -31,4 +31,14 @@ export default class Store extends EventEmitter {
             this.__defineSetter__(val.name, val.setter);
         });
     }
+
+    /**
+     * update Store.state method
+     * @param changedState
+     */
+    setState(changedState: Object){
+        this.state = Object.assign({}, this.state, changedState);
+        this.emit('UPDATE_STORE', this.state);
+        return;
+    }
 }
