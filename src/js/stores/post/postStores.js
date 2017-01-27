@@ -72,6 +72,7 @@ const getUserPosts = {
         // start loading...
         this.setState({
             isDataFetch: true,
+            loadedUserPost: true,
         });
 
         // firebase user post ref

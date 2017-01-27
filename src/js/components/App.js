@@ -26,8 +26,8 @@ export default class Layout extends Component {
     updateState(newState){
         this.setState(newState);
 
-        // 一覧見取得時は取得
-        if (this.state.isLogin && !this.state.isGetUserPosts){
+        // 一覧未取得時は取得
+        if (this.state.isLogin && !this.state.loadedUserPost){
             action.getUserPosts();
         }
     }
