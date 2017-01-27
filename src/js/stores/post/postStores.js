@@ -69,6 +69,11 @@ const getUserPosts = {
     type  : GET_USER_POSTS,
     action: function getUserPosts(){
 
+        // start loading...
+        this.setState({
+            isDataFetch: true,
+        });
+
         // firebase user post ref
         const userPostsRef = firebase.database().ref(`/user-post/${this.uid}`);
 
@@ -82,7 +87,8 @@ const getUserPosts = {
 
             this.setState({
                 postList,
-                isGetUserPosts: true
+                isGetUserPosts: true,
+                isDataFetch: false,
             });
         });
 

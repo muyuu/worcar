@@ -1,7 +1,7 @@
 const firebase = require('firebase');
 require('../../config/firebase');
 require("firebase/auth");
-import {LOGIN_CHECK, ALREADY_LOGIN, ALREADY_LOGOUT, SIGNUP, LOGIN, LOGOUT} from "../../actions/actionTypes";
+import {LOGIN_CHECK, SIGNUP, LOGIN, LOGOUT} from "../../actions/actionTypes";
 
 const auth = firebase.auth();
 
@@ -30,16 +30,25 @@ export const authProps = [
 const loginCheck = {
     type  : LOGIN_CHECK,
     action: function loginCheck(){
+
+        // start loading...
+        this.setState({
+            isDataFetch: true,
+        });
+
         auth.onAuthStateChanged((user) =>{
             if (user){
                 this.setState({
                     isLogin: true,
                     uid    : user.uid,
+                    isDataFetch: false,
+                    loadedUserPost: false,
                 });
             } else {
                 this.setState({
                     isLogin: false,
                     uid    : null,
+                    isDataFetch: false,
                 });
             }
         });
