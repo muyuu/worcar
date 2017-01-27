@@ -2,6 +2,7 @@ import React, {Component, Children} from 'react';
 import {action, store} from '../dispatcher/dispatcher';
 
 import PostList from './list/PostList';
+import Spinner from './icon/Spinner';
 
 
 export default class Layout extends Component {
@@ -25,8 +26,8 @@ export default class Layout extends Component {
     updateState(newState){
         this.setState(newState);
 
-        // 一覧見取得時は取得
-        if (this.state.isLogin && !this.state.isGetUserPosts){
+        // 一覧未取得時は取得
+        if (this.state.isLogin && !this.state.loadedUserPost){
             action.getUserPosts();
         }
     }
@@ -39,6 +40,11 @@ export default class Layout extends Component {
     }
 
     render(){
+        let spinner = "";
+        if (this.state.isDataFetch){
+            spinner = <Spinner/>;
+        }
+
         return (
             <div className="app">
                 <div className="panels">
@@ -49,6 +55,7 @@ export default class Layout extends Component {
                         {this.setChildren()}
                     </div>
                 </div>
+                {spinner}
             </div>
         );
     }
