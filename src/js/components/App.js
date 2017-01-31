@@ -8,6 +8,7 @@ import Spinner from './icon/Spinner';
 export default class Layout extends Component {
     constructor(props){
         super(props);
+        console.log(store.state);
 
         this.state = {
             isLogin   : store.isLogin,
@@ -39,22 +40,50 @@ export default class Layout extends Component {
         });
     }
 
+    isFetching(){
+        return this.state.isDataFetch;
+    }
+
+    alreadyFetch(){
+        return !this.state.isDataFetch && this.state.isDataFetch !== undefined;
+    }
+
+    alreadyLogin(){
+        return this.state.isLogin;
+    }
+
+    notLogin(){
+        return !this.state.isLogin || this.state.isLogin === undefined;
+    }
+
+    isInitialLoading(){
+        return this.alreadyFetch() && this.notLogin();
+    }
+
+    alreadyDependShowedData(){
+        return this.alreadyFetch() && this.alreadyLogin();
+    }
+
     render(){
-        let spinner = "";
-        if (this.state.isDataFetch){
-            spinner = <Spinner/>;
-        }
+        let spinner = this.isFetching() ? <Spinner/> : "";
+        let notLoginComponent = this.isInitialLoading() ? <div>{this.setChildren()}</div> : "";
 
         return (
             <div className="app">
-                <div className="panels">
-                    <div className="panel panel--list">
-                        <PostList list={this.state.postList}/>
+                {this.alreadyDependShowedData() ? (
+                    <div className="panels">
+                        <div className="panel panel--list">
+                            <PostList list={this.state.postList}/>
+                        </div>
+                        <div className="panel panel--content">
+                            {this.setChildren()}
+                        </div>
                     </div>
-                    <div className="panel panel--content">
-                        {this.setChildren()}
+                ) : (
+                    <div className="panels">
+                        {notLoginComponent}
                     </div>
-                </div>
+                )}
                 {spinner}
             </div>
         );
