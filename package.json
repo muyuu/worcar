@@ -11,7 +11,7 @@
     "watch:css": "node-sass -w src/css/style.sass dist/style.css",
     "check": "flow check",
     "lint": "eslint ./src",
-    "serve": "firebase serve",
+    "serve": "webpack-dev-server --history-api-fallback",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run serve & npm run watch",
     "watch": "npm run watch:css & npm run watch:js"
@@ -50,6 +50,7 @@
     "style-loader": "^0.13.1",
     "uglifyify": "^3.0.4",
     "watchify": "^3.8.0",
-    "webpack": "^2.2.0"
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^1.16.3"
   }
 }
