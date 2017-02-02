@@ -4796,7 +4796,8 @@ a {
   border-right: 1px solid #ccc; }
 
 .panel--content {
-  width: 70%; }
+  width: 70%;
+  height: 100%; }
 
 .panel__add {
   position: fixed;
