@@ -1,4 +1,5 @@
 import React, {Component, Children} from 'react';
+import {Link} from 'react-router';
 import {action, store} from '../dispatcher/dispatcher';
 
 import PostList from './list/PostList';
@@ -8,7 +9,6 @@ import Spinner from './icon/Spinner';
 export default class Layout extends Component {
     constructor(props){
         super(props);
-        console.log(store.state);
 
         this.state = {
             isLogin   : store.isLogin,
@@ -64,6 +64,9 @@ export default class Layout extends Component {
         return this.alreadyFetch() && this.alreadyLogin();
     }
 
+    addItem(e){
+    }
+
     render(){
         let spinner = this.isFetching() ? <Spinner/> : "";
         let notLoginComponent = this.isInitialLoading() ? <div>{this.setChildren()}</div> : "";
@@ -74,6 +77,15 @@ export default class Layout extends Component {
                     <div className="panels">
                         <div className="panel panel--list">
                             <PostList list={this.state.postList}/>
+
+                            <div className="panel__add">
+                                <Link
+                                    to={'/new'}
+                                    onClick={this.addItem.bind(this)}
+                                >
+                                    <i className="fa fa-plus fa-3x" ></i>
+                                </Link>
+                            </div>
                         </div>
                         <div className="panel panel--content">
                             {this.setChildren()}
