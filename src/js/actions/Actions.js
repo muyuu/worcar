@@ -43,6 +43,10 @@ export default class Actions {
         this.dispatcher.emit(type.UPDATE_POST, post);
     }
 
+    removePost(post){
+        this.dispatcher.emit(type.REMOVE_POST, post);
+    }
+
     changeDetailType(showType){
         this.dispatcher.emit(type.CHANGE_DETAIL_TYPE, showType);
     }
