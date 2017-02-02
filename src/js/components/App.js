@@ -4,6 +4,7 @@ import {action, store} from '../dispatcher/dispatcher';
 
 import PostList from './list/PostList';
 import Spinner from './icon/Spinner';
+import AddItem from './icon/AddItem';
 
 
 export default class Layout extends Component {
@@ -79,12 +80,7 @@ export default class Layout extends Component {
                             <PostList list={this.state.postList}/>
 
                             <div className="panel__add">
-                                <Link
-                                    to={'/new'}
-                                    onClick={this.addItem.bind(this)}
-                                >
-                                    <i className="fa fa-plus fa-3x" ></i>
-                                </Link>
+                                <AddItem/>
                             </div>
                         </div>
                         <div className="panel panel--content">
