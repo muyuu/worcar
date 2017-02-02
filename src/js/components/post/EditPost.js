@@ -28,6 +28,15 @@ export default class EditPost extends Component {
         action.updatePost(uid, key, slug, data);
     }
 
+
+    removeItem(){
+        const uid = this.props.uid;
+        const key = this.props.showedPost.key;
+        const slug = this.props.params.slug;
+        action.removePost({uid, key, slug});
+    }
+
+
     render(){
         if (this.props.showedPost === null) return (<div/>);
 
@@ -35,6 +44,10 @@ export default class EditPost extends Component {
             <div className="post post--edit">
                 <div className="post__head">
                     <PostStateSwitchBtn slug={this.props.params.slug} showType={this.props.showType}/>
+
+                    <div className="post__delete">
+                        <i className="fa fa-trash-o fa-2x" onClick={this.removeItem.bind(this)}></i>
+                    </div>
                 </div>
 
                 <div className="post__body">
