@@ -4772,6 +4772,9 @@ html, body {
   height: 100%;
   color: #474747; }
 
+a {
+  color: inherit; }
+
 .app {
   height: 100%; }
   .app__listview {
@@ -4795,6 +4798,11 @@ html, body {
 .panel--content {
   width: 70%; }
 
+.panel__add {
+  position: fixed;
+  bottom: 10px;
+  left: 10px; }
+
 .item {
   text-decoration: none;
   padding: 1em; }
@@ -4808,7 +4816,7 @@ html, body {
     display: block;
     margin: -1em;
     padding: 1em;
-    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     color: inherit;
     text-decoration: inherit; }
 
