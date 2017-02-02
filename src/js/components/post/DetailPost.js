@@ -13,8 +13,10 @@ export default class DetailPost extends Component {
     }
 
     removeItem(){
+        const uid = this.props.uid;
         const key = this.props.showedPost.key;
-        console.log(['delete: ', key].join(""));
+        const slug = this.props.params.slug;
+        action.removePost({uid, key, slug});
     }
 
     render(){

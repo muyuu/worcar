@@ -2,7 +2,7 @@ const firebase = require('firebase');
 require('../../config/firebase');
 require("firebase/auth");
 const shortid = require('shortid');
-import {NEW_POST, UPDATE_POST, CHANGE_DETAIL_TYPE, GET_USER_POSTS, SHOW_DETAIL} from "../../actions/actionTypes";
+import {NEW_POST, UPDATE_POST, REMOVE_POST, CHANGE_DETAIL_TYPE, GET_USER_POSTS, SHOW_DETAIL} from "../../actions/actionTypes";
 
 // getter setter
 export const postProps = [];
@@ -53,6 +53,23 @@ const updatePost = {
         ref.update(updates);
 
         this.emit(UPDATE_POST);
+    }
+};
+
+const removePost = {
+    type  : REMOVE_POST,
+    action: function removePost(data){
+        const key = data.key;
+        const uid = data.uid;
+        const slug = data.slug;
+
+        const updates = {};
+        updates[`/post/${key}`] = null;
+        updates[`/post-by-slug/${slug}`] = null;
+        updates[`/user-post/${uid}/${key}`] = null;
+
+        // remove data
+        ref.update(updates);
     }
 };
 
@@ -115,6 +132,7 @@ const showDetail = {
 export default {
     newPost,
     updatePost,
+    removePost,
     getUserPosts,
     showDetail,
     changeDetailType,
