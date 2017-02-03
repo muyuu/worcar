@@ -21,10 +21,10 @@ export default class DetailPost extends Component {
             let iconClass = "fa fa-${iconType}";
             return(
                 <span>
-                    <span className="btn__ico">
+                    <span className="pill__ico">
                         <i className={iconClass}></i>
                     </span>
-                    <span className="btn__label">
+                    <span className="pill__label">
                         {label}
                     </span>
                 </span>
@@ -34,7 +34,7 @@ export default class DetailPost extends Component {
         if(this.props.showType === 'edit'){
             post = <Link
                     to={"/post/" + this.props.slug}
-                    className="btn"
+                    className="pill"
                     onClick={this.changeDetailType}
                     data-type="view"
                 >
@@ -42,20 +42,20 @@ export default class DetailPost extends Component {
                 </Link>;
 
             edit = <span
-                className="btn btn--passive"
+                className="pill pill--passive"
             >
                 {labels("EDIT")}
             </span>;
         } else {
             post = <span
-                className="btn btn--passive"
+                className="pill pill--passive"
             >
                 {labels("VIEW")}
             </span>;
 
             edit = <Link
                 to={"/post/" + this.props.slug + "/edit"}
-                className="btn"
+                className="pill"
                 onClick={this.changeDetailType}
                 data-type="edit"
             >
@@ -63,7 +63,7 @@ export default class DetailPost extends Component {
             </Link>;
         }
         return (
-            <div className="btns">
+            <div className="pills">
                 {post}
                 {edit}
             </div>
