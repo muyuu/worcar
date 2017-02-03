@@ -4769,6 +4769,7 @@ ol {
   box-sizing: border-box; }
 
 html, body {
+  overflow: hidden;
   height: 100%;
   color: #474747; }
 
@@ -4809,7 +4810,8 @@ a {
   text-decoration: none;
   padding: 1em; }
   .items {
-    overflow: hidden;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
     display: inline-flex;
     display: flex;
     flex-direction: column;
