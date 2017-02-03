@@ -13,6 +13,7 @@
     "check": "flow check",
     "lint": "eslint ./src",
     "serve": "webpack-dev-server --history-api-fallback",
+    "deploy": "firebase deploy",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run serve & npm run watch",
     "watch": "npm run watch:css & npm run watch:js"
