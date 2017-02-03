@@ -41,28 +41,30 @@ export default class Signup extends Component {
 
     render(){
         return (
-            <div className="inputsBox">
-                <div className="inputsBox__head">
-                    <div className="inputsBox__caption">Sign up</div>
-                </div>
-                <div className="inputsBox__input">
-                    <input type="email" name="email" title="email" placeholder="sample@example.com"
-                        id="signupEmail"
-                        value={this.state.signupEmail}
-                        onChange={this.onChangeMail}
-                    />
-                </div>
+            <div className="overlay">
+                <div className="inputsBox">
+                    <div className="inputsBox__head">
+                        <div className="inputsBox__caption">Sign up</div>
+                    </div>
+                    <div className="inputsBox__input">
+                        <input type="email" name="email" title="email" placeholder="sample@example.com"
+                            id="signupEmail"
+                            value={this.state.signupEmail}
+                            onChange={this.onChangeMail}
+                        />
+                    </div>
 
-                <div className="inputsBox__input">
-                    <input type="password" name="passwords" title="passwords" placeholder="inputpasswords"
-                         id="signupPassword"
-                         value={this.state.signupPassword}
-                         onChange={this.onChangePassword}
-                    />
-                </div>
+                    <div className="inputsBox__input">
+                        <input type="password" name="passwords" title="passwords" placeholder="inputpasswords"
+                             id="signupPassword"
+                             value={this.state.signupPassword}
+                             onChange={this.onChangePassword}
+                        />
+                    </div>
 
-                <div className="inputsBox__btn">
-                    <button id="signup" className="btn btn-block" onClick={this.signup}>sign up</button>
+                    <div className="inputsBox__btn">
+                        <button id="signup" className="btn btn-block" onClick={this.signup}>sign up</button>
+                    </div>
                 </div>
             </div>
         );
