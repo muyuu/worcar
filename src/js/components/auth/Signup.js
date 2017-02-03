@@ -41,11 +41,11 @@ export default class Signup extends Component {
 
     render(){
         return (
-            <div className="signupBox">
-                <div className="signupBox__head">
-                    <div className="signupBox__caption">Sign up</div>
+            <div className="inputsBox">
+                <div className="inputsBox__head">
+                    <div className="inputsBox__caption">Sign up</div>
                 </div>
-                <div className="signupBox__input">
+                <div className="inputsBox__input">
                     <input type="email" name="email" title="email" placeholder="sample@example.com"
                         id="signupEmail"
                         value={this.state.signupEmail}
@@ -53,7 +53,7 @@ export default class Signup extends Component {
                     />
                 </div>
 
-                <div className="signupBox__input">
+                <div className="inputsBox__input">
                     <input type="password" name="passwords" title="passwords" placeholder="inputpasswords"
                          id="signupPassword"
                          value={this.state.signupPassword}
@@ -61,8 +61,8 @@ export default class Signup extends Component {
                     />
                 </div>
 
-                <div className="signupBox__btn">
-                    <button id="signup" onClick={this.signup}>sign up</button>
+                <div className="inputsBox__btn">
+                    <button id="signup" className="btn btn-block" onClick={this.signup}>sign up</button>
                 </div>
             </div>
         );

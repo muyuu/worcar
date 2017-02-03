@@ -9,13 +9,14 @@ export default props =>{
     };
 
     return (
-        <div className="logoutBox">
-            <div className="logoutBox__head">
-                <div className="logoutBox__caption">Log out</div>
+        <div className="inputsBox">
+            <div className="inputsBox__head">
+                <div className="inputsBox__caption">Log out?</div>
             </div>
-            <div className="logoutBox__btn">
+            <div className="inputsBox__btn">
                 <button
                     id="logout"
+                    className="btn btn-block"
                     onClick={logout}
                 >
                     log out
