@@ -40,27 +40,29 @@ export default class Login extends Component {
 
     render(){
         return (
-            <div className="inputsBox">
-                <div className="inputsBox__inner">
-                    <div className="inputsBox__head">
-                        <div className="inputsBox__caption">log in</div>
-                    </div>
-                    <div className="inputsBox__input">
-                        <input type="email" name="email" title="email" placeholder="sample@example.com"
-                            id="loginEmail"
-                            value={this.state.loginEmail}
-                            onChange={this.onChangeMail}
-                        />
-                    </div>
-                    <div className="inputsBox__input">
-                        <input type="password" name="passwords" title="passwords" placeholder="inputpasswords"
-                            id="loginPassword"
-                             value={this.state.loginPassword}
-                             onChange={this.onChangePassword}
-                        />
-                    </div>
-                    <div className="inputsBox__btn">
-                        <button id="login" className="btn btn-block" onClick={this.login}>log in</button>
+            <div className="overlay">
+                <div className="inputsBox">
+                    <div className="inputsBox__inner">
+                        <div className="inputsBox__head">
+                            <div className="inputsBox__caption">log in</div>
+                        </div>
+                        <div className="inputsBox__input">
+                            <input type="email" name="email" title="email" placeholder="sample@example.com"
+                                id="loginEmail"
+                                value={this.state.loginEmail}
+                                onChange={this.onChangeMail}
+                            />
+                        </div>
+                        <div className="inputsBox__input">
+                            <input type="password" name="passwords" title="passwords" placeholder="inputpasswords"
+                                id="loginPassword"
+                                 value={this.state.loginPassword}
+                                 onChange={this.onChangePassword}
+                            />
+                        </div>
+                        <div className="inputsBox__btn">
+                            <button id="login" className="btn btn-block" onClick={this.login}>log in</button>
+                        </div>
                     </div>
                 </div>
             </div>
