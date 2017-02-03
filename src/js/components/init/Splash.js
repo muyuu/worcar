@@ -6,13 +6,12 @@ export default class Splash extends Component {
         return;
     }
     render(){
-        console.log(this.props);
         if (this.props.isLogin) return (<div/>);
 
         return (
             <div className="splash">
                 <div className="splash__logo">
-                    <img src="/icon.png" alt="worcar"/>
+                    <img src="/logo.png" alt="worcar"/>
                 </div>
 
                 <div className="splash__btn">
