@@ -69,7 +69,7 @@ export default class EditPost extends Component {
                         </div>
                     </div>
                     <div className="post__btn">
-                        <button onClick={this.updatePost}>update</button>
+                        <button className="btn" onClick={this.updatePost}>update</button>
                     </div>
                 </div>
             </div>
