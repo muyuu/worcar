@@ -5339,3 +5339,19 @@ a {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.4); }
+
+.splash {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin: auto;
+  background: #fff;
+  width: 500px;
+  max-width: 80%;
+  padding: 10px; }
+  .splash__btn {
+    margin-top: 10px; }

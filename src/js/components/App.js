@@ -2,6 +2,7 @@ import React, {Component, Children} from 'react';
 import {Link} from 'react-router';
 import {action, store} from '../dispatcher/dispatcher';
 
+import Splash from './init/Splash';
 import PostList from './list/PostList';
 import Spinner from './icon/Spinner';
 import AddItem from './icon/AddItem';
@@ -36,6 +37,11 @@ export default class Layout extends Component {
 
     setChildren(){
         let count = 0;
+
+        if(this.props.children === null && !this.alreadyLogin()){
+            return <Splash/>;
+        }
+
         return Children.map(this.props.children, child =>{
             return React.cloneElement(child, Object.assign(this.state, { key: ++count }));
         });
