@@ -5251,3 +5251,22 @@ a {
   20% {
     transform: scaleY(1);
     -webkit-transform: scaleY(1); } }
+
+.pill {
+  display: inline-block;
+  padding: 0.2em 2em;
+  border: 1px solid #ccc;
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer; }
+  .pills {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; }
+  .pill--passive {
+    background: #f0f0f0;
+    cursor: inherit; }
+  .pill:first-child {
+    border-radius: 4px 0 0 4px; }
+  .pill:last-child {
+    border-radius: 0 4px 4px 0; }
