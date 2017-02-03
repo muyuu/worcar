@@ -4789,7 +4789,8 @@ a {
 .panels {
   display: inline-flex;
   display: flex;
-  height: 100%; }
+  height: 100%;
+  background: #fefefe; }
 
 .panel--list {
   width: 30%;
@@ -4830,6 +4831,7 @@ a {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   margin: auto;
+  background: #fff;
   width: 500px;
   max-width: 95%;
   border: 1px solid #ccc;
@@ -5324,3 +5326,12 @@ a {
     border-radius: 4px 0 0 4px; }
   .pill:last-child {
     border-radius: 0 4px 4px 0; }
+
+.overlay {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4); }
