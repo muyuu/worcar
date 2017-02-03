@@ -1,0 +1,38 @@
+.inputsBox
+    position: fixed
+    top: 50%
+    left: 0
+    right: 0
+    -webkit-transform: translateY(-50%)
+    -ms-transform: translateY(-50%)
+    transform: translateY(-50%)
+    margin: auto
+
+    width: 500px
+    max-width: 95%
+    border: 1px solid #ccc
+    border-radius: 4px
+    padding: 2rem
+
+    +smartphone
+        padding: 1rem
+
+    &__head
+    &__caption
+        font-weight: 700
+        font-size: 18px
+
+    &__input
+        margin: 20px 0 0 0
+        input
+            width: 100%
+            font-size: 18px
+            line-height: 1.6
+            padding: 5px
+
+    &__btn
+        width: 300px
+        max-width: 100%
+        margin: 20px auto 0
+
+
