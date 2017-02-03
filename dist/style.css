@@ -5357,5 +5357,12 @@ a {
   width: 500px;
   max-width: 80%;
   padding: 10px; }
+  @media (max-width: 768px) {
+    .splash {
+      width: 95%; } }
+  .splash__logo {
+    width: 260px;
+    max-width: 50%;
+    margin: auto; }
   .splash__btn {
     margin-top: 10px; }
