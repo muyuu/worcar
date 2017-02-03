@@ -1,27 +1,75 @@
 .btn
+    $btn-font-size-base: 15px
+    $btn-font-weight: normal
+    $btn-line-height-base: 1.6
+    $border-radius-base: .2rem
+    $btn-default-color: #fff
 
-    // wrapper
-    &s
-        display: flex
-        justify-content: center
-        align-items: flex-start
+    border: none
+    padding: 10px 15px
+    font-size: $btn-font-size-base
+    font-weight: $btn-font-weight
+    line-height: $btn-line-height-base
+    border-radius: $border-radius-base
+    color: $btn-default-color
+    -webkit-font-smoothing: subpixel-antialiased
+    transition: border .25s linear, color .25s linear, background-color .25s linear
 
-    display: inline-block
-    padding: 0.2em 2em
-    border: 1px solid #ccc
-    text-decoration: inherit
-    color: inherit
+    &:hover,
+    &:focus
+        outline: none
+        color: $btn-default-color
 
-    &--passive
-        background: #f0f0f0
+    &:active,
+    &.active
+        outline: none
+        box-shadow: none
 
-    &:first-child
-        border:
-            radius: 4px 0 0 4px
+    &:focus:active
+        outline: none
 
-    &:last-child
-        border:
-            radius: 0 4px 4px 0
+    // Button icons
+    [class^="fui-"]
+        margin: 0 1px
+        position: relative
+        line-height: 1
+        top: 1px
+
+        .btn-xs &
+            font-size: 11px
+            top: 0
+
+        .btn-hg &
+            top: 2px
+
+    // Alternate buttons
+    &-default
+
+    &-primary
+
+    &-info
+
+    &-danger
+
+    &-success
+
+    &-warning
 
 
+    // Link buttons
+    // -------------------------
+    &-link
+        color: inherit
 
+        &:hover,
+        &:focus
+            color: inherit
+            text-decoration: underline
+            background-color: transparent
+
+
+    // Block button
+    &-block
+        display: block
+        width: 100%
+        white-space: normal

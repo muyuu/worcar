@@ -4821,6 +4821,38 @@ a {
     color: inherit;
     text-decoration: inherit; }
 
+.inputsBox {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin: auto;
+  width: 500px;
+  max-width: 95%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 2rem; }
+  @media (max-width: 768px) {
+    .inputsBox {
+      padding: 1rem; } }
+  .inputsBox__caption {
+    font-weight: 700;
+    font-size: 18px; }
+  .inputsBox__input {
+    margin: 20px 0 0 0; }
+    .inputsBox__input input {
+      width: 100%;
+      font-size: 18px;
+      line-height: 1.6;
+      padding: 5px; }
+  .inputsBox__btn {
+    width: 300px;
+    max-width: 100%;
+    margin: 20px auto 0; }
+
 .post {
   height: 100%;
   display: flex;
@@ -4886,21 +4918,43 @@ a {
       border: none !important; }
 
 .btn {
-  display: inline-block;
-  padding: 0.2em 2em;
-  border: 1px solid #ccc;
-  text-decoration: inherit;
-  color: inherit; }
-  .btns {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; }
-  .btn--passive {
-    background: #f0f0f0; }
-  .btn:first-child {
-    border-radius: 4px 0 0 4px; }
-  .btn:last-child {
-    border-radius: 0 4px 4px 0; }
+  border: none;
+  padding: 10px 15px;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1.6;
+  border-radius: 0.2rem;
+  color: #fff;
+  -webkit-font-smoothing: subpixel-antialiased;
+  transition: border .25s linear, color .25s linear, background-color .25s linear; }
+  .btn:hover, .btn:focus {
+    outline: none;
+    color: #fff; }
+  .btn:active, .btn.active {
+    outline: none;
+    box-shadow: none; }
+  .btn:focus:active {
+    outline: none; }
+  .btn [class^="fui-"] {
+    margin: 0 1px;
+    position: relative;
+    line-height: 1;
+    top: 1px; }
+    .btn-xs .btn [class^="fui-"] {
+      font-size: 11px;
+      top: 0; }
+    .btn-hg .btn [class^="fui-"] {
+      top: 2px; }
+  .btn-link {
+    color: inherit; }
+    .btn-link:hover, .btn-link:focus {
+      color: inherit;
+      text-decoration: underline;
+      background-color: transparent; }
+  .btn-block {
+    display: block;
+    width: 100%;
+    white-space: normal; }
 
 .markdown {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
