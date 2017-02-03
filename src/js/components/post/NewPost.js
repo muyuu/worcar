@@ -43,15 +43,24 @@ export default class NewPost extends Component {
 
     render(){
         return (
-            <div className="newPost">
-                <div className="newPost__title">
-                    <input type="text" onChange={this.onChangeTitle}/>
-                </div>
-                <div className="newPost__raw">
-                    <textarea name="" id="" cols="30" rows="10" onChange={this.onChangeRaw}></textarea>
-                </div>
-                <div className="newPost__btn">
-                    <button onClick={this.addPost}>post</button>
+            <div className="post post--edit">
+                <div className="post__body">
+                    <div className="post__inner">
+                        <div className="post__title">
+                            <input type="text" placeholder="Write title here..."
+                                className="post__caption"
+                                onChange={this.onChangeTitle}/>
+                        </div>
+                        <div className="post__content">
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Please write..."
+                                className="post__raw"
+                                onChange={this.onChangeRaw}
+                            ></textarea>
+                        </div>
+                        <div className="post__btn">
+                            <button className="btn" onClick={this.addPost}>post</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
