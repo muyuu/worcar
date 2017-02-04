@@ -5,14 +5,17 @@ import Store from '../stores/Stores';
 // set stores
 import authStore, {authProps} from '../stores/auth/authStores';
 import postStore, {postProps} from '../stores/post/postStores';
+import listStore, {listProps} from '../stores/list/listStores';
 const stores = Object.assign(
     {},
     authStore,
     postStore,
+    listStore,
 );
 const props = [].concat(
     authProps,
     postProps,
+    listProps,
 );
 
 const dispatcher = new EventEmitter();
