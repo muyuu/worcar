@@ -13,7 +13,10 @@ export default class PostList extends Component {
     }
 
     render(){
-        const items = this.props.list.map(item =>{
+        const items = this.props.list.filter(v =>{
+            if (this.props.query === "") return true;
+            return v.title.indexOf(this.props.query) !== -1;
+        }).map(item =>{
             return (
                 <li key={item.key} className="item">
                     <Link
