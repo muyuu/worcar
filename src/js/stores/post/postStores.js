@@ -3,6 +3,7 @@ require('../../config/firebase');
 require("firebase/auth");
 const shortid = require('shortid');
 import {NEW_POST, UPDATE_POST, REMOVE_POST, CHANGE_DETAIL_TYPE, GET_USER_POSTS, SHOW_DETAIL} from "../../actions/actionTypes";
+import {browserHistory} from 'react-router';
 
 // getter setter
 export const postProps = [];
@@ -29,9 +30,12 @@ const newPost = {
         updates[`/user-post/${uid}/${newPostKey}`] = data;
 
         // post data
-        ref.update(updates);
-
-        this.emit(NEW_POST);
+        ref.update(updates).then(()=>{
+            this.setState({
+                addNewPost: true,
+                newPostSlug,
+            });
+        });
     }
 };
 
@@ -50,9 +54,10 @@ const updatePost = {
         updates[`/user-post/${uid}/${key}`] = data;
 
         // post data
-        ref.update(updates);
+        ref.update(updates).then(()=>{
+            browserHistory.push(`/post/${slug}`);
+        });
 
-        this.emit(UPDATE_POST);
     }
 };
 
@@ -69,7 +74,9 @@ const removePost = {
         updates[`/user-post/${uid}/${key}`] = null;
 
         // remove data
-        ref.update(updates);
+        ref.update(updates).then(()=>{
+            browserHistory.push(`/`);
+        });
     }
 };
 
