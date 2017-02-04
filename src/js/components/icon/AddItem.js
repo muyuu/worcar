@@ -1,9 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-const AddItem = props =>{
-    const addItem = (e)=>{
-    };
+const AddItem = () =>{
+    const addItem = ()=>{};
 
     return(
         <Link

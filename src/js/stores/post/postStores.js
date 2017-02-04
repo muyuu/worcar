@@ -1,7 +1,5 @@
-const firebase = require('firebase');
-require('../../config/firebase');
-require("firebase/auth");
-const shortid = require('shortid');
+import firebase from '../../config/firebase';
+import shortid from 'shortid';
 import {NEW_POST, UPDATE_POST, REMOVE_POST, CHANGE_DETAIL_TYPE, GET_USER_POSTS, SHOW_DETAIL} from "../../actions/actionTypes";
 import {browserHistory} from 'react-router';
 

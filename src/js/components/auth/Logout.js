@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import {action} from '../../dispatcher/dispatcher';
 
-export default props =>{
-
+const Logout = ()=>{
     const logout = ()=>{
         action.logout();
     };
@@ -27,3 +26,5 @@ export default props =>{
         </div>
     );
 };
+
+export default Logout;

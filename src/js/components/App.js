@@ -1,5 +1,4 @@
 import React, {Component, Children} from 'react';
-import {Link} from 'react-router';
 import {action, store} from '../dispatcher/dispatcher';
 
 import Splash from './init/Splash';
@@ -8,8 +7,7 @@ import SearchBox from './sub/SearchBox';
 import Spinner from './icon/Spinner';
 import AddItem from './icon/AddItem';
 
-
-export default class Layout extends Component {
+export default class App extends Component {
     constructor(props){
         super(props);
 
@@ -71,9 +69,6 @@ export default class Layout extends Component {
 
     alreadyDependShowedData(){
         return this.alreadyFetch() && this.alreadyLogin();
-    }
-
-    addItem(e){
     }
 
     render(){

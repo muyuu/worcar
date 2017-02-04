@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-const ReactMarkdown = require('react-markdown');
+import ReactMarkdown from 'react-markdown';
 import {action} from '../../dispatcher/dispatcher';
 import PostStateSwitchBtn from './PostStateSwitchBtn';
 

@@ -1,4 +1,4 @@
-const firebase = require('firebase');
+import * as firebase from 'firebase';
 
 // Initialize Firebase
 const config = {
@@ -10,4 +10,5 @@ const config = {
 };
 firebase.initializeApp(config);
 
+export default firebase;
 

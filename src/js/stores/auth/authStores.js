@@ -1,6 +1,4 @@
-const firebase = require('firebase');
-require('../../config/firebase');
-require("firebase/auth");
+import firebase from '../../config/firebase';
 import {LOGIN_CHECK, SIGNUP, LOGIN, LOGOUT} from "../../actions/actionTypes";
 import {browserHistory} from 'react-router';
 
@@ -62,10 +60,6 @@ const signup = {
         auth.createUserWithEmailAndPassword(data.email, data.password)
             .then(() =>{
                 browserHistory.push('/');
-            })
-            .catch((error) =>{
-                const errorCode = error.code;
-                const errorMessage = error.message;
             });
     }
 };
@@ -77,11 +71,6 @@ const login = {
             .then(() =>{
                 browserHistory.push('/');
                 this.emit(SIGNUP);
-            })
-            .catch((error) =>{
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorMessage);
             });
     }
 };
@@ -93,8 +82,6 @@ const logout = {
         auth.signOut()
             .then(() =>{
                 browserHistory.push('/');
-            },(error) =>{
-                console.log("error! not sign out");
             });
     }
 };
