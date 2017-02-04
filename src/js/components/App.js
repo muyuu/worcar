@@ -3,7 +3,8 @@ import {Link} from 'react-router';
 import {action, store} from '../dispatcher/dispatcher';
 
 import Splash from './init/Splash';
-import PostList from './list/PostList';
+import PostList from './sub/PostList';
+import SearchBox from './sub/SearchBox';
 import Spinner from './icon/Spinner';
 import AddItem from './icon/AddItem';
 
@@ -17,6 +18,7 @@ export default class Layout extends Component {
             uid       : null,
             postList  : [],
             showedPost: null,
+            searchQuery: "",
         };
 
         // login check
@@ -83,10 +85,18 @@ export default class Layout extends Component {
                 {this.alreadyDependShowedData() ? (
                     <div className="panels">
                         <div className="panel panel--list">
-                            <PostList list={this.state.postList}/>
+                            <div className="sub">
+                                <div className="sub__search">
+                                    <SearchBox/>
+                                </div>
 
-                            <div className="panel__add">
-                                <AddItem/>
+                                <div className="sub__list">
+                                    <PostList list={this.state.postList} query={this.state.searchQuery}/>
+                                </div>
+
+                                <div className="sub__add">
+                                    <AddItem/>
+                                </div>
                             </div>
                         </div>
                         <div className="panel panel--content">
