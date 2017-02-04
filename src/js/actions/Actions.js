@@ -28,6 +28,13 @@ export default class Actions {
 
 
     // --------------------------------------
+    // list
+    // --------------------------------------
+    searchList(query){
+        this.dispatcher.emit(type.SEARCH_LIST, query);
+    }
+
+    // --------------------------------------
     // post
     // --------------------------------------
     newPost(uid, post){

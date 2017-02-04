@@ -8,6 +8,7 @@ export const LOGOUT = 'LOGOUT';
 
 // List
 export const SHOW_DETAIL = 'SHOW_DETAIL';
+export const SEARCH_LIST = 'SEARCH_LIST';
 
 // Post
 export const NEW_POST = 'NEW_POST';
