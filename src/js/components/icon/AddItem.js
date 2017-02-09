@@ -1,16 +1,18 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {browserHistory} from 'react-router';
+import {action} from '../../dispatcher/dispatcher';
 
 const AddItem = () =>{
-    const addItem = ()=>{};
+    const addItem = ()=>{
+        action.moveNewPost();
+        browserHistory.push('/new');
+        // e.preventDefault();
+    };
 
     return(
-        <Link
-            to={'/new'}
-            onClick={addItem.bind(this)}
-        >
+        <div onClick={addItem}>
             <i className="fa fa-plus fa-3x"></i>
-        </Link>
+        </div>
     );
 };
 

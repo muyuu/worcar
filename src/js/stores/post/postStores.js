@@ -73,6 +73,9 @@ const removePost = {
 
         // remove data
         ref.update(updates).then(()=>{
+            this.setState({
+                isDetail: false,
+            });
             browserHistory.push(`/`);
         });
     }
@@ -129,6 +132,7 @@ const showDetail = {
                 showedPost: post,
                 showType: showType,
                 currentItem: slug,
+                isDetail: true,
             });
         });
     }
