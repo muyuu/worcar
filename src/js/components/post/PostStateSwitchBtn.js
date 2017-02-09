@@ -17,7 +17,7 @@ export default class DetailPost extends Component {
         let edit = <div/>;
 
         let labels = label =>{
-            let iconType = label === 'view' ? 'eye' : 'edit';
+            let iconType = label === 'VIEW' ? 'eye' : 'edit';
             let iconClass = `fa fa-${iconType}`;
             return(
                 <span>
