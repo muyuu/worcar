@@ -1,4 +1,9 @@
 .pill
+    $this-bg-color: $window-bg-color
+    $this-text-color: $selected-color
+
+    background: $this-bg-color
+    color: $this-text-color
 
     // wrapper
     &s
@@ -8,13 +13,14 @@
 
     display: inline-block
     padding: 0.2em 2em
-    border: 1px solid #ccc
+    border: 1px solid $selected-color
     text-decoration: inherit
-    color: inherit
+    color: $this-text-color
     cursor: pointer
 
     &--passive
-        background: #f0f0f0
+        background: $selected-color
+        color: $this-bg-color
         cursor: inherit
 
     &:first-child
