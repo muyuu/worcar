@@ -5358,10 +5358,14 @@ a {
     display: flex;
     justify-content: center;
     align-items: flex-start; }
+  .pill__ico {
+    margin-right: .3rem; }
   .pill--passive {
     background: #c55857;
     color: #fff;
     cursor: inherit; }
+    .pill--passive .fa {
+      color: #fff; }
   .pill:first-child {
     border-radius: 4px 0 0 4px; }
   .pill:last-child {
