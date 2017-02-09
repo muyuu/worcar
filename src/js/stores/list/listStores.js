@@ -1,4 +1,4 @@
-import {SEARCH_LIST} from "../../actions/actionTypes";
+import {SEARCH_LIST, SELECT_ITEM} from "../../actions/actionTypes";
 
 // getter setter
 export const listProps = [];
@@ -11,7 +11,6 @@ const searchList = {
         });
     }
 };
-
 
 export default {
     searchList,

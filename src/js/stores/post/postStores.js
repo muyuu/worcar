@@ -128,6 +128,7 @@ const showDetail = {
             this.setState({
                 showedPost: post,
                 showType: showType,
+                currentItem: slug,
             });
         });
     }
