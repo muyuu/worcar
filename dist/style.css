@@ -4800,6 +4800,7 @@ a {
 
 .panel--list {
   width: 460px;
+  height: 100%;
   border-right: 1px solid #c1c1c1; }
 
 .panel--content {
@@ -4812,9 +4813,6 @@ a {
   left: 10px; }
 
 .sub {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  display: inline-flex;
   display: flex;
   flex-direction: column;
   align-items: stretch;
