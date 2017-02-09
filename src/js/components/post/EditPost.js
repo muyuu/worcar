@@ -3,6 +3,10 @@ import React, {Component} from 'react';
 import {action} from '../../dispatcher/dispatcher';
 import PostStateSwitchBtn from './PostStateSwitchBtn';
 
+// components
+import BackToList from '../icon/BackToList';
+import RemovePost from '../icon/RemovePost';
+
 export default class EditPost extends Component {
     constructor(props){
         super(props);
@@ -28,6 +32,10 @@ export default class EditPost extends Component {
         action.updatePost(uid, key, slug, data);
     }
 
+    backList(){
+        action.backList();
+    }
+
 
     removeItem(){
         const uid = this.props.uid;
@@ -43,10 +51,14 @@ export default class EditPost extends Component {
         return (
             <div className="post post--edit">
                 <div className="post__head">
+                    <div className="post__back">
+                        <BackToList/>
+                    </div>
+
                     <PostStateSwitchBtn slug={this.props.params.slug} showType={this.props.showType}/>
 
                     <div className="post__delete">
-                        <i className="fa fa-trash-o fa-2x" onClick={this.removeItem.bind(this)}></i>
+                        <RemovePost uid={this.props.uid} postKey={this.props.showedPost.key} slug={this.props.params.slug}/>
                     </div>
                 </div>
 

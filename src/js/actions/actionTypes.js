@@ -10,6 +10,8 @@ export const LOGOUT = 'LOGOUT';
 export const SHOW_DETAIL = 'SHOW_DETAIL';
 export const SEARCH_LIST = 'SEARCH_LIST';
 export const SELECT_ITEM = 'SELECT_ITEM';
+export const BACK_LIST = 'BACK_LIST';
+export const MOVE_NEW_POST = 'MOVE_NEW_POST';
 
 // Post
 export const NEW_POST = 'NEW_POST';

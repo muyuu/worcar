@@ -75,10 +75,15 @@ export default class App extends Component {
         let spinner = this.isFetching() ? <Spinner/> : "";
         let notLoginComponent = this.isInitialLoading() ? <div>{this.setChildren()}</div> : "";
 
+        let panelsClass = "panels";
+        if (this.state.isDetail) {
+            panelsClass += " s-detail";
+        }
+
         return (
             <div className="app">
                 {this.alreadyDependShowedData() ? (
-                    <div className="panels">
+                    <div className={panelsClass}>
                         <div className="panel panel--list">
                             <div className="sub">
                                 <div className="sub__search">

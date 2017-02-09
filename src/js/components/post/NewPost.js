@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 
 import {action} from '../../dispatcher/dispatcher';
 
+// components
+import BackToList from '../icon/BackToList';
+
 export default class NewPost extends Component {
     constructor(props){
         super(props);
@@ -32,6 +35,10 @@ export default class NewPost extends Component {
         });
     }
 
+    backList(){
+        action.backList();
+    }
+
     addPost(){
         const uid = this.props.uid;
         const data = {
@@ -44,6 +51,12 @@ export default class NewPost extends Component {
     render(){
         return (
             <div className="post post--edit">
+                <div className="post__head">
+                    <div className="post__back">
+                        <BackToList/>
+                    </div>
+                </div>
+
                 <div className="post__body">
                     <div className="post__inner">
                         <div className="post__title">

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ReactMarkdown from 'react-markdown';
 import {action} from '../../dispatcher/dispatcher';
 import PostStateSwitchBtn from './PostStateSwitchBtn';
+import BackToList from '../icon/BackToList';
+import RemovePost from '../icon/RemovePost';
 
 export default class DetailPost extends Component {
     constructor(props){
@@ -10,6 +12,10 @@ export default class DetailPost extends Component {
         if (!this.props.showedPost){
             action.showDetail(this.props.params.slug, 'view');
         }
+    }
+
+    backList(){
+        action.backList();
     }
 
     removeItem(){
@@ -21,14 +27,19 @@ export default class DetailPost extends Component {
 
     render(){
         if (this.props.showedPost === null) return (<div/>);
+        console.log(this.props.showedPost);
 
         return (
             <div className="post">
                 <div className="post__head">
+                    <div className="post__back">
+                        <BackToList/>
+                    </div>
+
                     <PostStateSwitchBtn slug={this.props.params.slug} showType={this.props.showType}/>
 
                     <div className="post__delete">
-                        <i className="fa fa-trash-o fa-2x" onClick={this.removeItem.bind(this)}></i>
+                        <RemovePost uid={this.props.uid} postKey={this.props.showedPost.key} slug={this.props.params.slug}/>
                     </div>
                 </div>
 

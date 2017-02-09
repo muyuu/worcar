@@ -34,6 +34,14 @@ export default class Actions {
         this.dispatcher.emit(type.SEARCH_LIST, query);
     }
 
+    moveNewPost(){
+        this.dispatcher.emit(type.MOVE_NEW_POST);
+    }
+
+    backList(query){
+        this.dispatcher.emit(type.BACK_LIST, query);
+    }
+
     // --------------------------------------
     // post
     // --------------------------------------

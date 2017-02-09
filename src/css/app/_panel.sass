@@ -5,6 +5,14 @@
         display: inline-flex
         display: flex
         height: 100%
+        transition: all .2s cubic-bezier(0.22, 0.61, 0.36, 1)
+
+        +smartphone
+            width: 200%
+
+            &.s-detail
+                transform: translateX(-50%)
+                transition: all .2s cubic-bezier(0.22, 0.61, 0.36, 1)
 
     // list
     &--list
@@ -13,14 +21,22 @@
         border:
             right: 1px solid $border-color
 
+        +smartphone
+            display: block
+            width: 50%
+
     // content
     &--content
         width: 100%
         height: 100%
 
+        +smartphone
+            display: block
+            width: 50%
 
     &__add
         position: fixed
         bottom: 10px
         left: 10px
+
 
