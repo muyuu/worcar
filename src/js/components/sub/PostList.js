@@ -17,8 +17,13 @@ export default class PostList extends Component {
             if (this.props.query === "") return true;
             return v.title.indexOf(this.props.query) !== -1;
         }).map(item =>{
+            let selectedClass = "item";
+            if (this.props.current === item.slug) {
+               selectedClass += " item--current";
+            }
+
             return (
-                <li key={item.key} className="item">
+                <li key={item.key} className={selectedClass}>
                     <Link
                         to={"/post/" + item.slug}
                         onClick={this.showDetail}

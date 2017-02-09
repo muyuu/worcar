@@ -1,4 +1,4 @@
-import {SEARCH_LIST} from "../../actions/actionTypes";
+import {SEARCH_LIST, SELECT_ITEM} from "../../actions/actionTypes";
 
 // getter setter
 export const listProps = [];
@@ -12,7 +12,17 @@ const searchList = {
     }
 };
 
+const selectItem = {
+    type  : SELECT_ITEM,
+    action: function selectItem(slug){
+        this.setState({
+            currentItem: slug,
+        });
+    }
+};
+
 
 export default {
     searchList,
+    selectItem,
 };

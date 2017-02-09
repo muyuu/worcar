@@ -86,7 +86,11 @@ export default class App extends Component {
                                 </div>
 
                                 <div className="sub__list">
-                                    <PostList list={this.state.postList} query={this.state.searchQuery}/>
+                                    <PostList
+                                        list={this.state.postList}
+                                        query={this.state.searchQuery}
+                                        current={this.state.currentItem}
+                                    />
                                 </div>
 
                                 <div className="sub__add">

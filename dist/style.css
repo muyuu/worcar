@@ -4847,6 +4847,9 @@ a {
     border-bottom: 1px solid #ccc;
     color: inherit;
     text-decoration: inherit; }
+  .item--current {
+    background: #8bc311;
+    color: #fff; }
 
 .inputsBox {
   position: fixed;
