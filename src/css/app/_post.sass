@@ -8,6 +8,7 @@
 
     &__head
         position: relative
+        height: 58px
         padding: .73em 1.5em
 
     &__caption
@@ -57,6 +58,22 @@
         position: fixed
         bottom: 1em
         right: 1em
+
+    &__back
+        position: absolute
+        left: 10px
+        top: 14px
+        color: $selected-color
+        .fa,
+        span
+            vertical-align: middle
+            text-transform: uppercase
+        .fa
+            margin-right: .1em
+
+        display: none
+        +smartphone
+            display: inherit
 
     &__delete
         position: absolute
