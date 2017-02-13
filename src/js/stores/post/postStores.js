@@ -29,10 +29,12 @@ const newPost = {
 
         // post data
         ref.update(updates).then(()=>{
+            const posts = this.state.postList;
+            posts.newPostKey = data;
             this.setState({
-                addNewPost: true,
-                newPostSlug,
+                postList: posts
             });
+            browserHistory.push(`/post/${newPostSlug}`);
         });
     }
 };
@@ -117,7 +119,6 @@ const getUserPosts = {
                 isDataFetch: false,
             });
         });
-
     }
 };
 
