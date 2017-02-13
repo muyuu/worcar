@@ -4842,9 +4842,7 @@ a {
     flex-grow: 1;
     height: 100%; }
   .sub__add {
-    position: fixed;
-    bottom: 10px;
-    left: 10px; }
+    padding: 5px; }
     @media (max-width: 768px) {
       .sub__add {
         left: 100%;
@@ -5451,13 +5449,13 @@ a {
 .searchBox {
   border-bottom: 1px solid #c1c1c1; }
   .searchBox__input {
-    position: relative; }
+    position: relative;
+    background: #dbdbdb; }
     .searchBox__input input {
       -webkit-appearance: none;
       appearance: none;
       width: 100%;
       padding: 10px 4px 10px 25px;
-      background: #dbdbdb;
       font-size: 1.2rem;
       border: none; }
     .searchBox__input .fa {
