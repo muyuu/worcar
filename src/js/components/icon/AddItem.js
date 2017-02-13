@@ -11,7 +11,7 @@ const AddItem = () =>{
 
     return(
         <div onClick={addItem}>
-            <i className="fa fa-plus fa-3x"></i>
+            <i className="fa fa-plus-circle fa-2x"></i>
         </div>
     );
 };
