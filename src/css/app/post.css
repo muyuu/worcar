@@ -13,7 +13,8 @@
 
     &__caption{
         width: 100%;
-        border: none none 1px solid var(--borderColor);
+        border: none;
+        border-bottom: 1px solid var(--borderColor);
         border-radius: 0;
         font-size: 2.2rem;
         font-weight: 700;
