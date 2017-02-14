@@ -1,0 +1,92 @@
+:root{
+    --btn-font-size-base: 15px;
+    --btn-font-weight: normal;
+    --btn-line-height-base: 1.6;
+    --border-radius-base: .2rem;
+    --btn-default-color: #fff;
+    --btn-background-color: var(--selectedColor);
+}
+
+.btn {
+
+    border: none;
+    padding: 10px 15px;
+    font-size: var(--btn-font-size-base);
+    font-weight: var(--btn-font-weight);
+    line-height: var(--btn-line-height-base);
+    border-radius: var(--border-radius-base);
+    background: var(--btn-background-color);
+    color: var(--btn-default-color);
+    text-decoration: none;
+    -webkit-font-smoothing: subpixel-antialiased;
+    transition: border .25s linear, color .25s linear, background-color .25s linear;
+    cursor: pointer;
+
+    &:hover,
+    &:focus{
+        outline: none;
+        color: var(--btn-default-color);
+    }
+
+    &:active,
+    &.active {
+        outline: none;
+        box-shadow: none;
+    }
+
+    &:focus:active{
+        outline: none;
+    }
+
+    /*Button icons*/
+    [class^="fui-"] {
+        margin: 0 1px;
+        position: relative;
+        line-height: 1;
+        top: 1px;
+
+        .btn-xs & {
+            font-size: 11px;
+            top: 0;
+        }
+
+        .btn-hg & {
+            top: 2px;
+        }
+    }
+
+    /*Alternate buttons*/
+    &-default {}
+
+    &-primary {}
+
+    &-info {}
+
+    &-danger {}
+
+    &-success {}
+
+    &-warning {}
+
+
+    /*Link buttons*/
+    &-link {
+        color: inherit;
+
+        &:hover,
+        &:focus {
+            color: inherit;
+            text-decoration: underline;
+            background-color: transparent;
+        }
+    }
+
+
+    /*Block button*/
+    &-block {
+        display: block;
+        width: 100%;
+        white-space: normal;
+    }
+}
+

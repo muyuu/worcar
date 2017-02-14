@@ -1,0 +1,30 @@
+.sub{
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+    background: var(--windowBgColor);
+
+    /*search*/
+    &__search{}
+
+    /*list*/
+    &__list {
+         overflow: auto;
+         -webkit-overflow-scrolling: touch;
+         flex-grow: 1;
+    }
+
+    &__add {
+        padding: 5px;
+        text-align: right;
+
+        @media (--middle-viewport){
+            .s-detail & {
+                display: none
+            }
+        }
+    }
+}
+

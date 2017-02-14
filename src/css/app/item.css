@@ -1,0 +1,32 @@
+.item {
+    text-decoration: none;
+
+    /*wrapper*/
+    &s{
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        display: inline-flex;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    padding: 1em;
+    background: $bg-color;
+
+    &__link {
+        display: block;
+        margin: -1em;
+        padding: 1em;
+        border-bottom: 1px solid var(--borderColor);
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+
+    &--current {
+        background: var(--selectedColor);
+        color: var(--windowBgColor);
+    }
+}
+

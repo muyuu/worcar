@@ -1,0 +1,19 @@
+/* responsive mixin */
+@define-mixin break $width {
+    @media (max-width: $(width)) {
+        @mixin-content ;
+    }
+}
+
+@define-mixin tablet {
+    @mixin break var(--contentWidth) {
+        @mixin-content
+    }
+}
+
+@define-mixin smartphone {
+    @mixin break var(--spWidth) {
+        @mixin-content
+    }
+}
+

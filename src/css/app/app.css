@@ -1,0 +1,17 @@
+.app {
+    height: 100%;
+
+    &__listview {
+        height: 100%;
+    }
+
+    &__detailview {
+        height: 100%;
+    }
+
+    .l-row,
+    .l-col1,.l-col2,.l-col3,.l-col4,.l-col5,.l-col6,
+    .l-col7,.l-col8,.l-col9,.l-col10,.l-col11,.l-col12 {
+        height: 100%;
+    }
+}

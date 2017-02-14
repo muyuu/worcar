@@ -1,0 +1,29 @@
+.splash {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    margin: auto;
+    background: $window-bg-color;
+
+    width: 500px;
+    max-width: 80%;
+    padding: 10px;
+
+    @media(--small-viewport){
+        width: 95%;
+    }
+
+    &__logo {
+        width: 260px;
+        max-width: 50%;
+        margin: auto;
+    }
+
+    &__btn {
+        margin-top: 10px;
+    }
+}
+
+

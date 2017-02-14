@@ -1,0 +1,35 @@
+.pill {
+
+    display: inline-block;
+    padding: 0.2em 2em;
+    border: 1px solid var(--selectedColor);
+    background: var(--windowBgColor);
+    color: var(--selectedColor);
+    text-decoration: inherit;
+    color: var(--selectedColor);
+    cursor: pointer;
+
+    @media(--small-viewport){
+        padding: 0.2em 1em;
+    }
+
+    &s{
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    &--passive{
+        background: var(--selectedColor);
+        color: var(--windowBgColor);
+        cursor: inherit;
+    }
+
+    &:first-child{
+        border-radius: 4px 0 0 4px;
+    }
+
+    &:last-child{
+        border-radius: 0 4px 4px 0;
+    }
+}
