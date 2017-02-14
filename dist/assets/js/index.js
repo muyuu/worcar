@@ -16338,6 +16338,11 @@ var NewPost = function (_Component) {
     }
 
     _createClass(NewPost, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.nameInput.focus();
+        }
+    }, {
         key: 'onChangeTitle',
         value: function onChangeTitle(e) {
             this.setState({
@@ -16369,6 +16374,8 @@ var NewPost = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             return _react2.default.createElement(
                 'div',
                 { className: 'post post--edit' },
@@ -16392,6 +16399,9 @@ var NewPost = function (_Component) {
                             { className: 'post__title' },
                             _react2.default.createElement('input', { type: 'text', placeholder: 'Write title here...',
                                 className: 'post__caption',
+                                ref: function ref(title) {
+                                    _this2.nameInput = title;
+                                },
                                 onChange: this.onChangeTitle })
                         ),
                         _react2.default.createElement(

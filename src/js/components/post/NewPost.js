@@ -22,6 +22,9 @@ export default class NewPost extends Component {
         this.onChangeRaw = this.onChangeRaw.bind(this);
     }
 
+    componentDidMount(){
+        this.nameInput.focus();
+    }
 
     onChangeTitle(e){
         this.setState({
@@ -62,6 +65,7 @@ export default class NewPost extends Component {
                         <div className="post__title">
                             <input type="text" placeholder="Write title here..."
                                 className="post__caption"
+                                ref={(title) => { this.nameInput = title; }}
                                 onChange={this.onChangeTitle}/>
                         </div>
                         <div className="post__content">
