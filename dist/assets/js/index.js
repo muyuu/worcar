@@ -16875,10 +16875,15 @@ var newPost = {
         // post data
         ref.update(updates).then(function () {
             var posts = _this.state.postList;
-            posts.newPostKey = data;
-            _this.setState({
-                postList: posts
-            });
+
+            // force post push when late firebase responses.
+            if (posts[posts.length - 1].key !== newPostKey) {
+                posts.push(data);
+                _this.setState({
+                    postList: posts
+                });
+            }
+
             _reactRouter.browserHistory.push('/post/' + newPostSlug);
         });
     }
