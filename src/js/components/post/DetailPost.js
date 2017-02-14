@@ -27,7 +27,6 @@ export default class DetailPost extends Component {
 
     render(){
         if (this.props.showedPost === null) return (<div/>);
-        console.log(this.props.showedPost);
 
         return (
             <div className="post">

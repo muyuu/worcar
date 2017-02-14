@@ -4839,16 +4839,13 @@ a {
   .sub__list {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    flex-grow: 1;
-    height: 100%; }
+    flex-grow: 1; }
   .sub__add {
-    padding: 5px; }
+    padding: 5px;
+    text-align: right; }
     @media (max-width: 768px) {
-      .sub__add {
-        left: 100%;
-        margin-left: -3em; }
-        .s-detail .sub__add {
-          display: none; } }
+      .s-detail .sub__add {
+        display: none; } }
 
 .item {
   text-decoration: none;
@@ -4912,8 +4909,9 @@ a {
   align-items: stretch; }
   .post__head {
     position: relative;
-    height: 58px;
-    padding: .73em 1.5em; }
+    height: 50px;
+    padding: .5rem 1.5em;
+    background: #dbdbdb; }
   .post__caption {
     width: 100%;
     border-top: none;
@@ -5455,9 +5453,10 @@ a {
       -webkit-appearance: none;
       appearance: none;
       width: 100%;
-      padding: 10px 4px 10px 25px;
+      padding: 14px 4px 13px 30px;
       font-size: 1.2rem;
-      border: none; }
+      border: none;
+      background: transparent; }
     .searchBox__input .fa {
       position: absolute;
       top: 50%;
