@@ -30,10 +30,15 @@ const newPost = {
         // post data
         ref.update(updates).then(()=>{
             const posts = this.state.postList;
-            posts.newPostKey = data;
-            this.setState({
-                postList: posts
-            });
+
+            // force post push when late firebase responses.
+            if (posts[(posts.length - 1)].key !== newPostKey){
+                posts.push(data);
+                this.setState({
+                    postList: posts
+                });
+            }
+
             browserHistory.push(`/post/${newPostSlug}`);
         });
     }
