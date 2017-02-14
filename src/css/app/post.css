@@ -137,6 +137,7 @@
             &__raw {
                 padding: 0 1.5em 1em 1.5em;
                 -webkit-overflow-scrolling: touch;
+                font-family: "Source Code Pro", "Consolas", "Monaco", "Lucida Console";
 
                 @media(--small-viewport){
                     padding-left: 1rem;
