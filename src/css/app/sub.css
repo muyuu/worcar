@@ -11,9 +11,9 @@
 
     /*list*/
     &__list {
-         overflow: auto;
-         -webkit-overflow-scrolling: touch;
-         flex-grow: 1;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-grow: 1;
     }
 
     &__add {

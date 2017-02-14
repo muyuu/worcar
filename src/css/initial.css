@@ -13,10 +13,11 @@ html, body {
     width: 100%;
     height: 100%;
     color: var(--normalColor);
+    font-size: 15px;
 
-@media (--small-viewport) {
-    font-size: 14px;
-}
+    @media (--small-viewport) {
+        font-size: .8rem;
+    }
 }
 
 a {
