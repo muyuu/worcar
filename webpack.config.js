@@ -1,11 +1,19 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const env = process.env.NODE_ENV;
+
+const assetsPath = path.resolve(__dirname, 'dist/assets');
 
 module.exports = {
     entry: './src/js/index.js',
     output: {
-        path: './dist',
-        filename: 'index.js'
+        path: assetsPath,
+        filename: 'js/index.js'
     },
+    plugins: [
+        new ExtractTextPlugin('css/bundle.css'),
+    ],
     module: {
         rules: [
             {
@@ -15,7 +23,14 @@ module.exports = {
                 query: {
                     presets: ['es2015']
                 }
-            }
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract({
+                    loader: 'css-loader?importLoaders=1!postcss-loader'
+                }),
+            },
+
         ]
     },
     devServer: {
@@ -23,4 +38,4 @@ module.exports = {
         compress: true,
         port: 9000
     }
-}
+};

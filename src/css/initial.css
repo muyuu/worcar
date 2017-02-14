@@ -1,0 +1,24 @@
+.fa {
+    color: var(--selectedColor);
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html, body {
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    color: var(--normalColor);
+
+@media (--small-viewport) {
+    font-size: 14px;
+}
+}
+
+a {
+    color: inherit;
+}
