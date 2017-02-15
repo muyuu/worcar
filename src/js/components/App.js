@@ -1,11 +1,20 @@
 import React, {Component, Children} from 'react';
 import {action, store} from '../dispatcher/dispatcher';
 
+
+// child components
 import Splash from './init/Splash';
 import PostList from './sub/PostList';
 import SearchBox from './sub/SearchBox';
 import Spinner from './icon/Spinner';
 import AddItem from './icon/AddItem';
+
+
+// register keyboard shortcut
+import keymap from '../keymaps';
+import {ShortcutManager} from 'react-shortcuts';
+const shortcutManager = new ShortcutManager(keymap);
+
 
 export default class App extends Component {
     constructor(props){
@@ -33,6 +42,10 @@ export default class App extends Component {
         if (this.state.isLogin && !this.state.loadedUserPost){
             action.getUserPosts();
         }
+    }
+
+    getChildContext(){
+        return { shortcuts: shortcutManager };
     }
 
     setChildren(){
@@ -117,3 +130,7 @@ export default class App extends Component {
         );
     }
 }
+
+App.childContextTypes = {
+    shortcuts: React.PropTypes.object.isRequired
+};
