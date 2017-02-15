@@ -15149,6 +15149,12 @@ var _EditPost = __webpack_require__(137);
 
 var _EditPost2 = _interopRequireDefault(_EditPost);
 
+var _keymaps = __webpack_require__(308);
+
+var _keymaps2 = _interopRequireDefault(_keymaps);
+
+var _reactShortcuts = __webpack_require__(344);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -15163,6 +15169,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // post
 
 
+// register keyboard shortcut
+
+
+var shortcutManager = new _reactShortcuts.ShortcutManager(_keymaps2.default);
+
 var Root = function (_Component) {
     _inherits(Root, _Component);
 
@@ -15173,6 +15184,11 @@ var Root = function (_Component) {
     }
 
     _createClass(Root, [{
+        key: 'getChildContext',
+        value: function getChildContext() {
+            return { shortcuts: shortcutManager };
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -15196,6 +15212,11 @@ var Root = function (_Component) {
 }(_react.Component);
 
 exports.default = Root;
+
+
+Root.childContextTypes = {
+    shortcuts: _react2.default.PropTypes.object.isRequired
+};
 
 /***/ }),
 /* 126 */
@@ -15353,7 +15374,13 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = __webpack_require__(127);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _dispatcher = __webpack_require__(9);
+
+var _reactShortcuts = __webpack_require__(344);
 
 var _Splash = __webpack_require__(135);
 
@@ -15375,12 +15402,6 @@ var _AddItem = __webpack_require__(133);
 
 var _AddItem2 = _interopRequireDefault(_AddItem);
 
-var _keymaps = __webpack_require__(308);
-
-var _keymaps2 = _interopRequireDefault(_keymaps);
-
-var _reactShortcuts = __webpack_require__(344);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -15391,11 +15412,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 // child components
 
-
-// register keyboard shortcut
-
-
-var shortcutManager = new _reactShortcuts.ShortcutManager(_keymaps2.default);
 
 var App = function (_Component) {
     _inherits(App, _Component);
@@ -15418,6 +15434,9 @@ var App = function (_Component) {
 
         // subscribe
         _dispatcher.store.on('UPDATE_STORE', _this.updateState.bind(_this));
+
+        // binding
+        _this._handleShortcuts = _this._handleShortcuts.bind(_this);
         return _this;
     }
 
@@ -15432,9 +15451,14 @@ var App = function (_Component) {
             }
         }
     }, {
-        key: 'getChildContext',
-        value: function getChildContext() {
-            return { shortcuts: shortcutManager };
+        key: '_handleShortcuts',
+        value: function _handleShortcuts(actionFromKey, event) {
+            switch (actionFromKey) {
+                case 'MOVE_NEW_POST':
+                    _dispatcher.action.moveNewPost();
+                    event.preventDefault();
+                    break;
+            }
         }
     }, {
         key: 'setChildren',
@@ -15500,39 +15524,48 @@ var App = function (_Component) {
                 'div',
                 { className: 'app' },
                 this.alreadyDependShowedData() ? _react2.default.createElement(
-                    'div',
-                    { className: panelsClass },
+                    _reactShortcuts.Shortcuts,
+                    {
+                        name: 'ROOT',
+                        handler: this._handleShortcuts,
+                        tabIndex: 1,
+                        global: true
+                    },
                     _react2.default.createElement(
                         'div',
-                        { className: 'panel panel--list' },
+                        { className: panelsClass },
                         _react2.default.createElement(
                             'div',
-                            { className: 'sub' },
+                            { className: 'panel panel--list' },
                             _react2.default.createElement(
                                 'div',
-                                { className: 'sub__search' },
-                                _react2.default.createElement(_SearchBox2.default, null)
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'sub__list' },
-                                _react2.default.createElement(_PostList2.default, {
-                                    list: this.state.postList,
-                                    query: this.state.searchQuery,
-                                    current: this.state.currentItem
-                                })
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'sub__add' },
-                                _react2.default.createElement(_AddItem2.default, null)
+                                { className: 'sub' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'sub__search' },
+                                    _react2.default.createElement(_SearchBox2.default, null)
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'sub__list' },
+                                    _react2.default.createElement(_PostList2.default, {
+                                        list: this.state.postList,
+                                        query: this.state.searchQuery,
+                                        current: this.state.currentItem
+                                    })
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'sub__add' },
+                                    _react2.default.createElement(_AddItem2.default, null)
+                                )
                             )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'panel panel--content' },
+                            this.setChildren()
                         )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'panel panel--content' },
-                        this.setChildren()
                     )
                 ) : _react2.default.createElement(
                     'div',
@@ -15548,11 +15581,6 @@ var App = function (_Component) {
 }(_react.Component);
 
 exports.default = App;
-
-
-App.childContextTypes = {
-    shortcuts: _react2.default.PropTypes.object.isRequired
-};
 
 /***/ }),
 /* 130 */
@@ -15881,8 +15909,6 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouter = __webpack_require__(21);
-
 var _dispatcher = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -15890,15 +15916,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var AddItem = function AddItem() {
     var addItem = function addItem() {
         _dispatcher.action.moveNewPost();
-        _reactRouter.browserHistory.push('/new');
-        // e.preventDefault();
     };
 
-    return _react2.default.createElement(
-        'div',
-        { onClick: addItem },
-        _react2.default.createElement('i', { className: 'fa fa-plus-circle fa-2x' })
-    );
+    return _react2.default.createElement('i', { className: 'fa fa-plus-circle fa-2x', onClick: addItem });
 };
 
 exports.default = AddItem;
@@ -16831,6 +16851,8 @@ exports.listProps = undefined;
 
 var _actionTypes = __webpack_require__(39);
 
+var _reactRouter = __webpack_require__(21);
+
 // getter setter
 var listProps = exports.listProps = [];
 
@@ -16849,6 +16871,7 @@ var moveNewPost = {
         this.setState({
             isDetail: true
         });
+        _reactRouter.browserHistory.push('/new');
     }
 };
 
@@ -38153,13 +38176,17 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _root = __webpack_require__(346);
+
+var _root2 = _interopRequireDefault(_root);
+
 var _newPost = __webpack_require__(309);
 
 var _newPost2 = _interopRequireDefault(_newPost);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = Object.assign({}, _newPost2.default);
+exports.default = Object.assign({}, _root2.default, _newPost2.default);
 
 /***/ }),
 /* 309 */
@@ -58344,6 +58371,22 @@ ShortcutManager.CHANGE_EVENT = 'shortcuts:update';
 exports.default = ShortcutManager;
 module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 346 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    ROOT: {
+        MOVE_NEW_POST: "c"
+    }
+};
 
 /***/ })
 /******/ ]);
