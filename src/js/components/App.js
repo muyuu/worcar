@@ -10,12 +10,6 @@ import Spinner from './icon/Spinner';
 import AddItem from './icon/AddItem';
 
 
-// register keyboard shortcut
-import keymap from '../keymaps';
-import {ShortcutManager} from 'react-shortcuts';
-const shortcutManager = new ShortcutManager(keymap);
-
-
 export default class App extends Component {
     constructor(props){
         super(props);
@@ -44,8 +38,6 @@ export default class App extends Component {
         }
     }
 
-    getChildContext(){
-        return { shortcuts: shortcutManager };
     }
 
     setChildren(){
@@ -130,7 +122,3 @@ export default class App extends Component {
         );
     }
 }
-
-App.childContextTypes = {
-    shortcuts: React.PropTypes.object.isRequired
-};
