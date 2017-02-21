@@ -1,11 +1,15 @@
 import React, {Component, Children} from 'react';
 import {action, store} from '../dispatcher/dispatcher';
+import { Shortcuts } from 'react-shortcuts';
 
+
+// child components
 import Splash from './init/Splash';
 import PostList from './sub/PostList';
 import SearchBox from './sub/SearchBox';
 import Spinner from './icon/Spinner';
 import AddItem from './icon/AddItem';
+
 
 export default class App extends Component {
     constructor(props){
@@ -24,6 +28,9 @@ export default class App extends Component {
 
         // subscribe
         store.on('UPDATE_STORE', this.updateState.bind(this));
+
+        // binding
+        this._handleShortcuts = this._handleShortcuts.bind(this);
     }
 
     updateState(newState){
@@ -32,6 +39,16 @@ export default class App extends Component {
         // 一覧未取得時は取得
         if (this.state.isLogin && !this.state.loadedUserPost){
             action.getUserPosts();
+        }
+    }
+
+
+    _handleShortcuts(actionFromKey, event){
+        switch (actionFromKey) {
+            case 'MOVE_NEW_POST':
+                action.moveNewPost();
+                event.preventDefault();
+                break;
         }
     }
 
@@ -83,30 +100,36 @@ export default class App extends Component {
         return (
             <div className="app">
                 {this.alreadyDependShowedData() ? (
-                    <div className={panelsClass}>
-                        <div className="panel panel--list">
-                            <div className="sub">
-                                <div className="sub__search">
-                                    <SearchBox/>
-                                </div>
+                    <Shortcuts name='ROOT'
+                        handler={this._handleShortcuts}
+                        tabIndex={1}
+                        global={true}
+                    >
+                        <div className={panelsClass}>
+                            <div className="panel panel--list">
+                                <div className="sub">
+                                    <div className="sub__search">
+                                        <SearchBox/>
+                                    </div>
 
-                                <div className="sub__list">
-                                    <PostList
-                                        list={this.state.postList}
-                                        query={this.state.searchQuery}
-                                        current={this.state.currentItem}
-                                    />
-                                </div>
+                                    <div className="sub__list">
+                                        <PostList
+                                            list={this.state.postList}
+                                            query={this.state.searchQuery}
+                                            current={this.state.currentItem}
+                                        />
+                                    </div>
 
-                                <div className="sub__add">
-                                    <AddItem/>
+                                    <div className="sub__add">
+                                        <AddItem/>
+                                    </div>
                                 </div>
                             </div>
+                            <div className="panel panel--content">
+                                {this.setChildren()}
+                            </div>
                         </div>
-                        <div className="panel panel--content">
-                            {this.setChildren()}
-                        </div>
-                    </div>
+                    </Shortcuts>
                 ) : (
                     <div className="panels">
                         {notLoginComponent}

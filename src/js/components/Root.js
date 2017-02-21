@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Router, Route, browserHistory} from 'react-router';
-
 import App from './App';
 
 // auth
@@ -13,7 +12,16 @@ import NewPost from './post/NewPost';
 import DetailPost from './post/DetailPost';
 import EditPost from './post/EditPost';
 
+// register keyboard shortcut
+import keymap from '../keymaps';
+import {ShortcutManager} from 'react-shortcuts';
+const shortcutManager = new ShortcutManager(keymap);
+
 export default class Root extends Component {
+    getChildContext(){
+        return { shortcuts: shortcutManager };
+    }
+
     render(){
         return (
             <Router history={browserHistory}>
@@ -30,3 +38,7 @@ export default class Root extends Component {
         );
     }
 }
+
+Root.childContextTypes = {
+    shortcuts: React.PropTypes.object.isRequired
+};

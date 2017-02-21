@@ -1,4 +1,5 @@
 // @flow
+// eslint-disable-next-line
 import styles from '../css/style.css';
 import React from 'react';
 import {render} from 'react-dom';

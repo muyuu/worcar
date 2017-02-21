@@ -1,4 +1,5 @@
 import {SEARCH_LIST, BACK_LIST, MOVE_NEW_POST} from "../../actions/actionTypes";
+import {browserHistory} from 'react-router';
 
 // getter setter
 export const listProps = [];
@@ -18,6 +19,7 @@ const moveNewPost = {
         this.setState({
             isDetail: true,
         });
+        browserHistory.push('/new');
     }
 };
 
