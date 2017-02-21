@@ -1,5 +1,4 @@
 import React, {Component, Children} from 'react';
-import ReactDOM from 'react-dom';
 import {action, store} from '../dispatcher/dispatcher';
 import { Shortcuts } from 'react-shortcuts';
 
@@ -101,8 +100,7 @@ export default class App extends Component {
         return (
             <div className="app">
                 {this.alreadyDependShowedData() ? (
-                    <Shortcuts
-                        name='ROOT'
+                    <Shortcuts name='ROOT'
                         handler={this._handleShortcuts}
                         tabIndex={1}
                         global={true}
