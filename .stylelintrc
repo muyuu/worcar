@@ -12,6 +12,7 @@
             "except": ["first-nested"],
             "ignore": ["after-comment"]
         } ],
+        "selector-nested-pattern": "^.*$",
         "unit-whitelist": ["em", "rem", "%", "s", "px"]
     }
 }
