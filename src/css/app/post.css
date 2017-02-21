@@ -81,13 +81,13 @@
         top: 14px;
         color: var(--selectedColor);
 
-        .fa,
-        span{
+        & .fa,
+        & span{
             vertical-align: middle;
             text-transform: uppercase;
         }
 
-        .fa{
+        & .fa{
             margin-right: .1em;
         }
 
@@ -108,7 +108,7 @@
     // modifier
     // --------------------------------------------- */
     &--edit {
-        .post {
+        & .post {
             &__body{
                 padding-bottom: 0;
             }

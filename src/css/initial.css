@@ -14,7 +14,6 @@ html, body {
     height: 100%;
     color: var(--normalColor);
     font-size: 15px;
-
     @media (--small-viewport) {
         font-size: .8rem;
     }

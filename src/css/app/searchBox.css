@@ -5,7 +5,7 @@
         position: relative;
         background: var(--bgColorDark);
 
-        input {
+        & input {
             -webkit-appearance: none;
             appearance: none;
             width: 100%;
@@ -15,7 +15,7 @@
             background: transparent;
         }
 
-        .fa {
+        & .fa {
             position: absolute;
             top: 50%;
             left: 10px;

@@ -39,7 +39,7 @@
     }
 
     /*Button icons*/
-    [class^="fui-"] {
+    &[class^="fui-"] {
         margin: 0 1px;
         position: relative;
         line-height: 1;
