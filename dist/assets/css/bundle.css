@@ -84,7 +84,7 @@
     padding: 2rem
 }@media(max-width: 768px){.inputsBox{padding:1rem}
     }.inputsBox__head{
-}.inputsBox__caption{font-weight:700;font-size:18px}.inputsBox__input{margin:20px 0 0 0;input{width:100%;font-size:18px;line-height:1.6;padding:5px}}.inputsBox__btn{width:300px;max-width:100%;margin:20px auto 0}.post{
+}.inputsBox__caption{font-weight:700;font-size:18px}.inputsBox__input{margin:20px 0 0 0}.inputsBox__input input{width:100%;font-size:18px;line-height:1.6;padding:5px}.inputsBox__btn{width:300px;max-width:100%;margin:20px auto 0}.post{
     height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
