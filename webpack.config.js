@@ -25,7 +25,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
+                test: /\.p?css$/,
                 loader: ExtractTextPlugin.extract({
                     loader: 'css-loader?importLoaders=1!postcss-loader'
                 }),
