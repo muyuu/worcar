@@ -112,11 +112,16 @@ const getUserPosts = {
 
         userPostsRef.orderByChild('updateAt').on('value', data =>{
             const posts = data.val();
-            const postList = Object.keys(posts).map(val =>{
-                const postData = Object.assign({}, posts[val]);
-                postData.key = val;
-                return postData;
-            });
+
+            let postList = [];
+
+            if (posts !== null){
+                postList = Object.keys(posts).map(val =>{
+                    const postData = Object.assign({}, posts[val]);
+                    postData.key = val;
+                    return postData;
+                });
+            }
 
             this.setState({
                 postList,
