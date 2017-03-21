@@ -17304,11 +17304,16 @@ var getUserPosts = {
 
         userPostsRef.orderByChild('updateAt').on('value', function (data) {
             var posts = data.val();
-            var postList = Object.keys(posts).map(function (val) {
-                var postData = Object.assign({}, posts[val]);
-                postData.key = val;
-                return postData;
-            });
+
+            var postList = [];
+
+            if (posts !== null) {
+                postList = Object.keys(posts).map(function (val) {
+                    var postData = Object.assign({}, posts[val]);
+                    postData.key = val;
+                    return postData;
+                });
+            }
 
             _this3.setState({
                 postList: postList,
