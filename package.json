@@ -23,7 +23,7 @@
   "author": "muyuu",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "^6.7.2",
+    "autoprefixer": "^9.8.5",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
